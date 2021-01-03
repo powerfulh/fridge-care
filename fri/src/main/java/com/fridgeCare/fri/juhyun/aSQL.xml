@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="aSQL">
+	<select id="getMemb" resultType="aVO" parameterType="String">
+		SELECT
+		    id, NVL(b, 0) bcnt, condate, joindate
+		FROM
+		    member m, 
+		    (
+		        SELECT
+		            bmno, COUNT(*) b
+		        FROM
+		            board
+		        GROUP BY
+		            bmno
+		    ) 
+		    
+		WHERE
+		    mno = bmno(+)
+		    AND id = #{id}
+	</select>
+	
+	<delete id="deleteThumb">
+		DELETE FROM
+		    thumb
+		WHERE
+		    tmno = #{mno}
+	</delete>
+	
+	<delete id="deleteReply">
+		DELETE FROM
+		    reply
+		WHERE
+		    remno = #{mno}
+	</delete>
+	
+	<select id="getBnoList" resultType="aVO" parameterType="int">
+		SELECT
+		    bno 
+		FROM 
+		    board 
+		WHERE 
+		    bmno = #{mno}
+	</select>
+	
+	
+	
+	<select id="getLoginInfo" resultType="aVO">
+		SELECT
+		    id, mail
+		FROM
+		    member m
+		WHERE
+		    (sysdate - condate) > 365
+		    AND isshow = 'Y'
+		    AND id NOT IN(SELECT id FROM delinfo)
+	</select>
+	
+	<select id="getDelInfo" resultType="aVO">
+		SELECT
+		    id, mail
+		FROM
+		    delinfo 
+		WHERE
+		    (sysdate - deldate) >= 7
+		    AND isshow = 'Y'
+	</select>
+	
+	<select id="getIsshow" resultType="int" parameterType="String">
+		SELECT
+		    COUNT(*)
+		FROM
+		    delinfo
+		WHERE
+		    isshow = 'N'
+		    AND id = #{id}
+	</select>
+	
+	<select id="getSevenLogin" resultType="aVO">
+		SELECT
+		    id, mail
+		FROM
+		    delinfo d
+		WHERE
+		    id NOT IN(SELECT
+		                m.id
+		            FROM
+		                member m
+		            WHERE
+		                (sysdate - condate) > 365)
+	</select>
+	
+	<delete id="deleteDelInfo" parameterType="String">
+		DELETE FROM
+			delinfo
+		WHERE
+			id = #{id}
+	</delete>
+	
+	<insert id="addDelInfo" parameterType="aVO">
+		INSERT INTO 
+		    delinfo(dno, id, mail)
+		VALUES(
+		    (SELECT NVL(MAX(dno)+ 1, 1001) FROM delinfo), #{id}, #{mail}
+		)
+	</insert>
+	
+	<update id="setIsshow" parameterType="String">
+		UPDATE
+		    delinfo
+		SET
+		    isshow = 'N'
+		WHERE
+		    id = #{id}
+	</update>
+	
+	
+	<delete id="deleteBoardPart">
+		DELETE FROM
+		    boardpart
+		WHERE
+		    bno = #{bno}
+	</delete>
+	
+	<delete id="deleteUserLike">
+		delete from
+		    userlike
+		where
+		    lmno = #{mno}
+	</delete>
+	<delete id="deleteLikeBno">
+		delete from
+		    userlike
+		where
+		    lbno = #{bno}
+	</delete>
+	<delete id="deleteBoardReply">
+		delete from
+		    reply
+		where
+		    rebno = #{bno} 
+	</delete>
+	<delete id="deleteBoard">
+		DELETE FROM
+		    board
+		WHERE
+		    bmno = #{mno}
+	</delete>
+	<delete id="deleteBoardBno">
+		DELETE FROM
+		    board
+		WHERE
+		    bno = #{bno}
+	</delete>
+	<select id="getBoardThumb" resultType="aVO" parameterType="int">
+		SELECT
+		    tno
+		FROM
+		    thumb
+		WHERE
+		    tno = ANY( SELECT
+		                tno
+		            FROM
+		                board
+		            WHERE
+		                bmno = #{mno})
+	</select>
+	<select id="getBnoThumb" resultType="int" parameterType="int">
+		SELECT
+		    t.tno
+		FROM
+		    board b, thumb t
+		WHERE
+		    bno =  #{bno}
+		    AND b.tno = t.tno
+	</select>
+	<delete id="deleteBoardThumb">
+		DELETE FROM
+		    thumb
+		WHERE
+		    tno = #{tno}
+	</delete>
+	<delete id="deleteMemb">
+		DELETE FROM
+		    member
+		WHERE
+		    mno = #{mno}
+	</delete>
+	
+	<!-- 검열단어 등록 -->
+	<insert id="addCencer" parameterType="String">
+		INSERT INTO
+			cencer(cno, body, cdate)
+		VALUES(
+			(SELECT NVL(MAX(cno) + 1, 1001) FROM cencer),
+			#{body}, sysdate
+		)
+	</insert>
+	<select id="getCencerCnt" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*) cnt
+		FROM
+			cencer
+		WHERE
+			isshow = 'Y'
+			AND body = #{body}
+	</select>
+	<select id="getCencerList" resultType="aVO">
+		SELECT
+			body
+		FROM
+			cencer
+		WHERE
+			isshow = 'Y'
+	</select>
+	<select id="getBoardMno" resultType="int">
+		SELECT
+		   	bmno
+		FROM
+		    board
+		WHERE
+		    bno = #{bno}
+	</select>
+	<select id="getCencerBoard" resultType="int">
+		SELECT
+		    bno
+		FROM
+		    board
+		WHERE
+		    title LIKE '%' || #{body} || '%'
+	</select>
+	<select id="getCencerBoardPart" resultType="int">
+		SELECT
+		    bpno
+		FROM
+		    boardpart
+		WHERE
+		    body LIKE '%' || #{body} || '%'
+		
+	</select>
+	<select id="getCencerReply" resultType="int">
+		SELECT
+		    reno
+		FROM
+		    reply
+		WHERE
+		    body LIKE '%' || #{body} || '%'
+		
+	</select>
+	<select id="getCencerMember" resultType="int">
+		SELECT
+		    mno
+		FROM
+		    member
+		WHERE
+		    id LIKE '%' || #{body} || '%'
+	</select>
+	<delete id="deleteCencerBoardPart">
+		DELETE FROM
+			boardpart
+		WHERE
+			bpno = #{bpno}
+	</delete>
+	<delete id="deleteCencerReply">
+		DELETE FROM
+			reply
+		WHERE
+			reno = #{reno}
+	</delete>
+	
+	
+	
+	
+	<insert id="addNotice">
+		INSERT INTO
+			notice(nno,ntitle,nbody,ncode)
+		VALUES(
+			(SELECT NVL(MAX(nno) + 1, 1001) FROM notice),
+			#{title}, #{body}, 1
+		)
+	</insert>
+	<insert id="addQnA">
+		INSERT INTO
+			notice(nno,ntitle,nbody,ncode,upno)
+		VALUES(
+			(SELECT NVL(MAX(nno) + 1, 1001) FROM notice),
+			#{title}, #{body}, 2, #{upno} 
+		)
+	</insert>
+	<insert id="addFAQ">
+		INSERT INTO
+			notice(nno,ntitle,nbody,ncode)
+		VALUES(
+			(SELECT NVL(MAX(nno) + 1, 1001) FROM notice),
+			#{title}, #{body}, 3 
+		)
+	</insert>
+	
+</mapper>

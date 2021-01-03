@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+		https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	<aop:aspectj-autoproxy />
+	<!-- 파일 업로드를 위한 뷰 서블릿 설정 -->
+	<!-- 파일 업로드를 할때 컨트롤러에서 멀티파트파일객체로 파라미터를 받을수 있게 해준다 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="50000000"></beans:property>
+		<beans:property name="maxInMemorySize" value="50000000"></beans:property>
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+	</beans:bean>
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/com/fridgeCare/fri/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<beans:import resource="daoContext.xml"/>
+	<beans:import resource="utilContext.xml"/>
+	<beans:import resource="srvcContext.xml"/>
+	<beans:import resource="interceptorContext.xml"/>
+	<beans:import resource="Context-quartz.xml"/>
+  	<beans:import resource="mailContext.xml"/>
+	<context:component-scan base-package="com.fridgeCare.fri" />
+	
+</beans:beans>

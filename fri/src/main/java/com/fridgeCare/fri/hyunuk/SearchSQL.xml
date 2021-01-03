@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sSQL">
+	
+	<!-- 재료 조회 -->
+	<select id="getIngredient" resultType="sVO">
+		SELECT * FROM ingredient
+	</select>
+	
+	<!-- 조건에 맞는 게시물 조회 -->
+	<select id="getRecipelist" resultType="sVO" parameterType="java.util.Map">
+		SELECT
+		    b.bno bno, b.title title, m.id id, b.time time, t.tname tname
+		FROM
+		    BOARD b, MEMBER m, THUMB t
+		WHERE
+		    b.bmno = m.mno
+		    AND b.tno = t.tno
+		    AND CATEGORY IN (${CAT})
+		    AND SITUAT IN (${situ})
+		    AND REGEXP_LIKE(INGRED, #{SelIng})
+		    AND b.ISSHOW = 'Y'
+	</select>
+	
+	<!-- 몇개의 레시피가 있는지 조회 -->
+	<select id="getData" resultType="int" parameterType="gVO">
+		SELECT count(*) FROM board
+			WHERE
+		    CATEGORY LIKE #{category}
+		    AND INGRED LIKE #{ingred}
+		    AND situat LIKE #{situat}
+		    AND time LIKE #{time}
+	</select>
+	
+	<!-- 타이틀 검색 -->
+	<select id="titleSearch" resultType="sVO" parameterType="java.util.Map">
+		SELECT
+		    b.bno bno, b.title title, m.id id, b.time time, (t.dir || t.tname) tdir
+		FROM
+		    BOARD b, MEMBER m, THUMB t
+		WHERE 
+		    b.bmno = m.mno
+		    AND b.tno = t.tno
+		    AND title LIKE #{search}
+	</select>
+	
+	<!-- 게시물 클릭시 조회수 증가 -->
+	<update id="increseCnt" parameterType="int">
+		UPDATE BOARD SET CNT = CNT +1 WHERE bno = #{bno}
+	</update>
+	
+	<!-- 재료조회 -->
+	<select id="getingredient" parameterType="inVO">
+		SELECT * FROM ingredient;
+	</select>
+	
+	<select id="searchCNT" resultType="int" parameterType="gVO">
+		SELECT count(*) FROM board WHERE title LIKE #{search}
+	</select>
+	
+</mapper>

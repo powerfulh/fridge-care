@@ -1,0 +1,170 @@
+.maindiv{
+	background-color:whitesmoke;
+	padding:10px;
+	width:100%;
+}
+.mw1000{
+	max-width:1000px;
+}
+.mw1100{
+	max-width:1100px;
+}
+.mw1200{
+	max-width:1200px;
+}
+.minw800{
+	min-width:800px;
+}
+.inline{
+	display:inline-block;
+}
+.block{
+	display:block;
+}
+.nonedisplay{
+	display:none;
+}
+.w700{
+	width:700px;
+}
+.w650{
+	width:650px;
+}
+.w600{
+	width:600px;
+}
+.h200{
+	height:200px;	
+}
+.h180{
+	height:180px;	
+}
+.h160{
+	height:160px;	
+}
+.h140{
+	height:140px;
+}
+.h120{
+	height:120px;
+}
+.h100{
+	height:100px;
+}
+.h80{
+	height:80px;
+}
+.h60{
+	height:60px;
+}
+.h50{
+	height:50px;
+}
+.h30{
+	height:30px;
+}
+.blacktext{
+	color:black;
+}
+.pt8{
+	font-size:8pt;
+}
+.pt12{
+	font-size:12pt;
+}
+.pt16{
+	font-size:16pt;
+}
+.pt18{
+	font-size:18pt;
+}
+.pt20{
+	font-size:20pt;
+}
+.pt22{
+	font-size:22pt;
+}
+.clearboth{
+	clear:both;
+}
+input.radio30{
+	width:30px;
+	height:30px;
+}
+.floatleft{
+	float:left;
+}
+.floatright{
+	float:right;
+}
+.w100p{
+	width:100%;
+}
+.w90p{
+	width:90%;
+}
+.w80p{
+	width:80%;
+}
+.w70p{
+	width:70%;
+}
+.w60p{
+	width:60%;
+}
+.w50p{
+	width:50%;
+}
+.h100p{
+	height:100%;
+}
+.h90p{
+	height:90%;
+}
+.h80p{
+	height:80%;
+}
+.h70p{
+	height:70%;
+}
+.h60p{
+	height:60%;
+}
+.h50p{
+	height:50%;
+}
+.padding5{
+	padding:5px;
+}
+.padding10{
+	padding:10px;
+}
+.paddingbottom5{
+	padding-bottom:5px;
+}
+.paddingbottom10{
+	padding-bottom:10px;
+}
+.boldfont{
+	font-weight:bold;
+}
+span.inactivepage{
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .5s;
+	border: 1px solid #ddd;
+}
+span.inactivepage:hover{
+	background-color: yellow;
+}
+span.activepage{
+	float: left;
+	padding: 8px 16px;
+	background-color: green;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+.change05bgc{
+	transition: background-color .5s;
+}

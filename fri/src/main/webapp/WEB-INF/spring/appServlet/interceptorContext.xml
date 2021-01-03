@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+	<beans:bean id="LoginCheck" class="com.fridgeCare.fri.interceptor.LoginCheck"/>
+	<beans:bean id="cencerCheck" class="com.fridgeCare.fri.interceptor.CencerCheck" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/**/*.fri"/>
+			<exclude-mapping path="/hh/main.fri"/>
+			<exclude-mapping path="/hh/joinpage.fri"/>
+			<exclude-mapping path="/hh/idCheck.fri"/>
+			<exclude-mapping path="/hh/mailcheck.fri"/>
+			<exclude-mapping path="/hh/joinproc.fri"/>
+			<exclude-mapping path="/hh/logincheck.fri"/>
+			<exclude-mapping path="/hh/logout.fri"/>
+			<exclude-mapping path="/hh/myinfo.fri"/>
+			<exclude-mapping path="/hh/ajaxtest.fri"/>
+			<exclude-mapping path="/hh/pwfind.fri"/>
+			<exclude-mapping path="/hh/mailtest.fri"/>
+			<exclude-mapping path="/hh/transtest.fri"/>
+			<exclude-mapping path="/hh/sendpwfindmail.fri"/>
+			<exclude-mapping path="/hh/pwfindproc.fri"/>
+			<exclude-mapping path="/hh/pwchange.fri"/>
+			<exclude-mapping path="/hh/pwchangeproc.fri"/>
+			
+			<exclude-mapping path="/juhyun/recipe/resipiPage.fri"/>
+	        <exclude-mapping path="/juhyun/recipe/resipiReply.fri"/>
+	        <exclude-mapping path="/juhyun/recipe/resipiLikeCount.fri"/>
+	        <exclude-mapping path="/juhyun/partner/partner.fri"/>
+	        <exclude-mapping path="/juhyun/partner/partnerCnt.fri"/>
+	        <exclude-mapping path="/juhyun/admin/admin.fri"/>
+	        <exclude-mapping path="/juhyun/admin/delete.fri"/>
+	        <exclude-mapping path="/juhyun/admin/deletePage.fri"/>
+	        <exclude-mapping path="/juhyun/admin/deletePageProc.fri"/>
+	        <exclude-mapping path="/juhyun/admin/addNotice.fri"/>
+	        <exclude-mapping path="/juhyun/admin/addNoticeProc.fri"/>
+	        <exclude-mapping path="/juhyun/admin/schedulergPage.fri"/>
+	        <exclude-mapping path="/juhyun/admin/wordCencerPage.fri"/>
+	        <exclude-mapping path="/juhyun/admin/addCencerProc.fri"/>
+
+			<exclude-mapping path="/hyunuk/search.fri"/>
+			<exclude-mapping path="/hyunuk/selected.fri"/>
+
+			<exclude-mapping path="/joo/notice.fri"/>
+			<beans:ref bean="LoginCheck"/>
+		</interceptor>
+		<interceptor>
+	         <mapping path="/juhyun/admin/addCencerProc.fri"/>
+	         <mapping path="/**/recipeAddProc.fri"/>
+	         <mapping path="/**/joinproc.fri"/>
+	         <mapping path="/**/resipiReply.fri"/>
+	         <beans:ref bean="cencerCheck" />
+  	    </interceptor>
+		
+	</interceptors>
+</beans:beans>

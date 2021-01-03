@@ -1,0 +1,28 @@
+div.dimension2{
+	width:200px;
+}
+div.dimension3{
+	width:25px;
+}
+div.dimension7{
+	height:40px;
+	margin-bottom:5px;
+}
+div.dimension8{
+	width:90%;
+	height:35px;
+	margin-bottom:5px;
+}
+
+input.dimension2{
+	width:140px;
+}
+input.dimension3{
+	width:90%;
+	height:35px;
+	margin-bottom:5px;
+}
+
+a.dimension2{
+	width:200px;
+}

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jSQL">
+	<select id="getInList" resultType="String">
+		SELECT 
+			INAME 
+		FROM 
+			INGREDIENT
+	</select>
+	
+	<insert id="addRecipe" parameterType="jVO">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			(SELECT NVL(MAX(bno) + 1, 1001) FROM board)
+		</selectKey>
+		INSERT INTO
+		    board(bno, bmno, tno, title, category, ingred, video, time, situat)
+		VALUES(
+		    #{bno},
+		    (select mno from member where id= #{id}),
+		    #{tno}, #{title}, #{category}, #{inbox}, #{video}, #{time}, #{situat}
+		)
+	</insert>
+	
+	<insert id="addThumb" parameterType="jtVO">
+		<selectKey keyProperty="tno" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(tno) + 1, 1001)
+			FROM
+				thumb
+		</selectKey>
+		insert into
+		    thumb(tno, dir, tname)
+		values(
+		    #{tno}, '/fri/img/thumb/', #{tname}
+		)
+	</insert>
+	
+	<insert id="addRecipeDetail" parameterType="jrVO">
+		insert into
+		    boardpart(
+	    <if test="oriname != null">
+		    	bpno, body, bno, oriname, savename, dir
+	    </if>
+	    <if test="oriname == null">
+		    	bpno, body, bno
+	    </if>
+		    )
+		values(
+		<if test="oriname != null">
+		    (select NVL(MAX(bpno) + 1, 1001) from boardpart),
+		    #{body}, #{bno},
+		    #{oriname}, #{savename}, '/fri/img/upload/'
+		</if>	
+		<if test="oriname == null">
+		    (select NVL(MAX(bpno) + 1, 1001) from boardpart),
+		    #{body}, #{bno}
+		</if>
+		)
+	</insert>
+	
+	<select id="getThumb" resultType="String" parameterType="int">
+		SELECT
+			tname
+		FROM
+			thumb
+		WHERE
+			fisshow = 'Y'
+			AND tno = #{tno}
+	</select>
+	
+	<select id="getNotice" resultType="jnVO">
+		SELECT
+			nno, ntitle, nbody, ndate, nclick
+		FROM 
+			notice
+		WHERE
+			nisshow = 'Y'
+			AND ncode = 1
+	</select>
+	
+	<select id="getFaq" resultType="jnVO">
+		SELECT
+			nno, ntitle, ndate, nclick
+		FROM 
+			notice
+		WHERE
+			nisshow = 'Y'
+			AND ncode = 2
+	</select>
+
+	<select id="getQna" resultType="jnVO">
+		SELECT
+			nno, ntitle, ndate, nclick
+		FROM 
+			notice
+		WHERE
+			nisshow = 'Y'
+			AND ncode = 3
+			AND nupno = 0
+	</select>
+	
+	<select id="getNBody" resultType="jnVO" parameterType="jnVO">
+		select 
+		    n1.nno, n1.ntitle, n1.nbody, n1.nupno, n2.nbody subbody, n1.nclick
+		from
+		    notice n1, notice n2
+		where
+		    n1.nno = n2.nupno(+)
+		    AND n1.nno = #{nno}
+	</select>
+	
+	<update id="upNno" parameterType="jnVO">
+		<selectKey keyProperty="nclick" resultType="int" order="AFTER">
+			SELECT
+				nclick
+			FROM
+				notice
+			WHERE
+				nno = #{nno}
+		</selectKey>
+		
+		UPDATE
+		    notice
+		SET
+		    nclick = nclick + 1
+		where
+		    nno = #{nno}
+	</update>
+	
+	<insert id="insComm" parameterType="jnVO">
+		insert into
+		    notice(nno, nbody, ncode, nupno)
+		values(
+		    (select nvl(max(nno) + 1, 1001) from notice),
+		    #{nbody}, 3, #{nupno}
+		)
+	</insert>
+	
+	
+</mapper>

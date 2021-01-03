@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hsql">
+	<select id="idcheck" resultType="int" parameterType="string">
+		select count(*) from member where id = #{id}
+	</select>
+	
+	<select id="mailcheck" resultType="int" parameterType="string">
+		select count(*) from member where mail = #{mail}
+	</select>
+	
+	<select id="insertmember" parameterType="ivo">
+		insert INTO member(
+		mno , id , pw , mail , age , gen , local , tel) VALUES(
+		(select max(mno) from member)+1 , #{inputid} , #{inputpw} , #{inputmail} , #{inputage} , #{inputgen} , #{inputloc} , #{inputtel}
+		)
+	</select>
+	
+	<select id="updatemember" parameterType="ivo">
+		update member set
+		tel = #{inputtel} , age = #{inputage} , local = #{inputloc}
+		where id = #{inputid}
+	</select>
+	
+	<select id="logincheck" parameterType="ivo" resultType="int">
+		select count(*) from member
+		where id = #{inputid} and pw = #{inputpw} and isshow = 'Y'
+	</select>
+	
+	<select id="getThumb" parameterType="string" resultType="string">
+		select tname from thumb
+		where tmno = (select mno from member where id = #{sid})
+	</select>
+	
+	<select id="insertavt" parameterType="tvo">
+		insert INTO thumb(
+		tno , dir , tname , tmno) VALUES(
+		(select max(tno) from thumb)+1 , #{dir} , #{tname} ,
+		(select mno from member where id = #{id}))
+	</select>
+	
+	<select id="updateavt" parameterType="tvo">
+		update thumb set
+		dir = #{dir} , tname = #{tname}
+		where tmno = (select mno from member where id = #{id})
+	</select>
+	
+	<select id="getLUVO" resultType="luvo">
+		select *
+		from (select board.bno , title , bdate d , (select id from member where mno = bmno) id , (select tname from thumb where tno = board.tno) savename ,
+		(select tname from thumb where thumb.tmno = (select mno from member where mno = bmno)) tname
+		from board , boardpart
+		where board.bno = boardpart.bno and isshow = 'Y'
+		order by bno desc , bpno)
+		where rownum = 1
+	</select>
+	
+	<select id="getweekrank" resultType="srvo">
+		select * from
+		(select bno , tname , title , id
+		from board , thumb , member
+		where bmno = mno and board.tno = thumb.tno and
+		bdate between sysdate-7 and sysdate and board.isshow = 'Y'
+		order by lcount desc)
+		where rownum = 1
+	</select>
+	
+	<select id="getmonthrank" resultType="srvo">
+		select * from
+		(select bno , tname , title , id
+		from board , thumb , member
+		where bmno = mno and board.tno = thumb.tno and
+		bdate between sysdate-30 and sysdate and board.isshow = 'Y'
+		order by lcount desc)
+		where rownum = 1
+	</select>
+	
+	<select id="getmemberinfo" parameterType="string" resultType="mvo">
+		select * from member where id = #{sid} and isshow = 'Y'
+	</select>
+	
+	<select id="submitcondate" parameterType="string">
+		update member set condate = sysdate where id = #{sid}
+	</select>
+	
+	<select id="transtest">
+		insert INTO transtest VALUES(#{transdata})
+	</select>
+	
+	<select id="membercheck" resultType="int" parameterType="ivo">
+		select count(*) from member where id = #{inputid} and
+		mail = #{inputmail} and isshow = 'Y'
+	</select>
+	
+	<select id="updateAN" parameterType="int">
+		update authentication set newdata = #{AN}
+	</select>
+	
+	<select id="pwfindproc" resultType="int" parameterType="string">
+		select count(*) from authentication where newdata = #{AN}
+	</select>
+	
+	<select id="updatepw" parameterType="mvo">
+		UPDATE member set pw = #{pw} where id = #{id}
+	</select>
+	
+	<select id="secession" parameterType="string">
+		update member set isshow = 'N' where id = #{sid}
+	</select>
+	
+	<select id="confirmpartner" resultType="int" parameterType="string">
+		select count(*) from board
+		where bmno = (select mno from member where id = #{sid})
+	</select>
+	
+	<select id="updategrade" parameterType="string">
+		update member set grade = 2 where id = #{sid}
+	</select>
+</mapper>

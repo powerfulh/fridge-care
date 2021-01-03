@@ -1,0 +1,143 @@
+통합 요청설계입니다 요청설계 커밋하지 말고 톡으로 보내주거나 본인전용 요청설계 따로 만들어서 커밋 해주세요~
+
+------------------------------------------------------------
+* 메인 페이지 요청
+요청내용 : /fri/main.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/main.jsp
+------------------------------------------------------------
+* 회원가입 페이지 요청
+요청내용 : /fri/joinpage.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/joinpage.jsp
+------------------------------------------------------------
+* 비밀번호찾기 페이지 요청
+요청내용 : /fri/pwfind.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/pwfind.jsp
+------------------------------------------------------------
+* 내 정보 보기 요청
+요청내용 : /fri/myinfo.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/myinfo.jsp
+------------------------------------------------------------
+* 아이디 중복검사 요청
+요청내용 : /fri/idCheck.fri
+파라미터 : (String id)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+* 레시피 페이지 요청
+요청내용 : /fri/juhyun/recipe/resipiPage.fri
+파라미터 : int bno, int nowPage, (String sid)
+컨트롤러 : com.fridgeCare.fri.juhyun.ResipiController.resipiPage()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/recipe/resipiPage.jsp
+------------------------------------------------------------
+* 레시피 페이지 댓글 요청
+요청내용 : /fri/juhyun/recipe/resipiReply.fri
+파라미터 : int bno, int mno, String body
+컨트롤러 : com.fridgeCare.fri.juhyun.ResipiController.resipiReply()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/recipe/resipiPage.jsp
+------------------------------------------------------------
+* 레시피 페이지 추천 요청
+요청내용 : /fri/juhyun/recipe/resipiLikeCount.fri
+파라미터 : int bno, int mno
+컨트롤러 : com.fridgeCare.fri.juhyun.ResipiController.resipiLike()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/recipe/resipiPage.jsp
+------------------------------------------------------------
+* 파트너 게시판 페이지 요청
+요청내용 : /fri/juhyun/partner/partner.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.juhyun.PartnerController.partnerBoard()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/partner/partner.jsp
+------------------------------------------------------------
+* 파트너 게시판 조회수 증가 요청
+요청내용 : /fri/juhyun/partner/partnerCnt.fri
+파라미터 : int bno, int nowPage
+컨트롤러 : com.fridgeCare.fri.juhyun.PartnerController.partnerCnt()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/recipe/resipiPage.jsp
+------------------------------------------------------------
+* 관리자 페이지 요청
+요청내용 : /fri/juhyun/admin/admin.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.adminLogin()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/admin.jsp
+------------------------------------------------------------
+* 고객센터 페이지 요청
+요청내용 : /fri/juhyun/admin/addNotice.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.addNotice()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/addNotice.jsp
+------------------------------------------------------------
+* 공지사항 등록 요청
+요청내용 : /fri/juhyun/admin/addNoticeProc.fri
+파라미터 : String title , String body
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.addNoticeProc()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/addNotice.jsp
+------------------------------------------------------------
+* QnA 등록 요청
+요청내용 : /fri/juhyun/admin/addQnAProc.fri
+파라미터 : String title , String body, int upno
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.addQnAProc()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/addNotice.jsp
+------------------------------------------------------------
+* FAQ 등록 요청
+요청내용 : /fri/juhyun/admin/addFAQProc.fri
+파라미터 : String title , String body
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.addFAQProc()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/addNotice.jsp
+------------------------------------------------------------
+* 검열 페이지 요청
+요청내용 : /fri/juhyun/admin/wordCencerPage.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.wordCencerPage()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/wordCencerPage.jsp
+------------------------------------------------------------
+* 검열 단어 등록 요청
+요청내용 : /fri/juhyun/admin/addCencerProc.fri
+파라미터 : String body
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.addCencerProc()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/wordCencerPage.jsp
+------------------------------------------------------------
+* 회원 삭제 페이지 요청
+요청내용 : /fri/juhyun/admin/deletePage.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.deletePage()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/deletePage.jsp
+------------------------------------------------------------
+* 회원 정보 요청
+요청내용 : /fri/juhyun/admin/deletePageProc.fri
+파라미터 : String id
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.deletePageProc()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/deletePage.jsp
+------------------------------------------------------------
+* 회원 삭제 요청
+요청내용 : /fri/juhyun/admin/delete.fri
+파라미터 : String id, int mno
+컨트롤러 : com.fridgeCare.fri.juhyun.adminController.delete()
+뷰     : /WEB-INF/views/com/fridgeCare/fri/juhyun/admin/deletePage.jsp
+------------------------------------------------------------
+
+
+
+### 레시피 재료 요청설계
+요청주소 : /search.fri
+컨트롤러 : com.fridgeCare.fri.controller.search.Search
+파라미터 : 무
+뷰 : WEB-INF/views/com/fridgeCare/fri/search.jsp
+-------------------------------------------------------------------------------
+### 선택된 카테고리로 레시피 검색 
+요청주소 : /selected.fri
+컨트롤러 : com.fridgeCare.fri.controller.search.selected.fri
+파라미터 : Situat(상황), Category(분류), SelIng(선택한 재료)
+뷰 : WEB-INF/views/com/fridgeCare/fri/search.jsp
+-------------------------------------------------------------------------------
+
+
