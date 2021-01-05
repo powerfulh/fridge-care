@@ -1,33 +1,104 @@
-통합 요청설계입니다 요청설계 커밋하지 말고 톡으로 보내주거나 본인전용 요청설계 따로 만들어서 커밋 해주세요~
 
 ------------------------------------------------------------
 * 메인 페이지 요청
-요청내용 : /fri/main.fri
+요청내용 : /fri/hh/main.fri
 파라미터 : 
 컨트롤러 : com.fridgeCare.fri.hh.HController
 뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/main.jsp
 ------------------------------------------------------------
 * 회원가입 페이지 요청
-요청내용 : /fri/joinpage.fri
+요청내용 : /fri/hh/joinpage.fri
 파라미터 : 
 컨트롤러 : com.fridgeCare.fri.hh.HController
 뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/joinpage.jsp
 ------------------------------------------------------------
 * 비밀번호찾기 페이지 요청
-요청내용 : /fri/pwfind.fri
+요청내용 : /fri/hh/pwfind.fri
 파라미터 : 
 컨트롤러 : com.fridgeCare.fri.hh.HController
 뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/pwfind.jsp
 ------------------------------------------------------------
 * 내 정보 보기 요청
-요청내용 : /fri/myinfo.fri
+요청내용 : /fri/hh/myinfo.fri
 파라미터 : 
 컨트롤러 : com.fridgeCare.fri.hh.HController
 뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/myinfo.jsp
 ------------------------------------------------------------
 * 아이디 중복검사 요청
-요청내용 : /fri/idCheck.fri
+요청내용 : /fri/hh/idCheck.fri
 파라미터 : (String id)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 메일 중복검사 요청
+요청내용 : /fri/hh/mailcheck.fri
+파라미터 : (String mail)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 회원가입 요청
+요청내용 : /fri/hh/joinproc.fri
+파라미터 : (MultipartFile inputavt , InputVO ivo)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/
+------------------------------------------------------------
+* 내 정보 수정 요청
+요청내용 : /fri/hh/infoedit.fri
+파라미터 : (MultipartFile inputavt , InputVO ivo)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/hh/myinfo.fri?edit
+------------------------------------------------------------
+* 로그인 요청
+요청내용 : /fri/hh/logincheck.fri
+파라미터 : (InputVO ivo)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/hh/fri/hh/main.fri
+------------------------------------------------------------
+* 로그아웃 요청
+요청내용 : /fri/hh/logout.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/
+------------------------------------------------------------
+* 인증메일 발송 요청
+요청내용 : /fri/hh/sendpwfindmail.fri
+파라미터 : (String id , String mail)
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 본인확인 인증 요청
+요청내용 : /fri/hh/pwfindproc.fri
+파라미터 : String AN
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 비밀번호 변경페이지 요청
+요청내용 : /fri/hh/pwchange.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/hh/pwchange.jsp
+------------------------------------------------------------
+* 비밀번호 변경 요청
+요청내용 : /fri/hh/pwchangeproc.fri
+파라미터 : String inputpw
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/hh/main.fri?pwchange
+------------------------------------------------------------
+* 탈퇴 요청
+요청내용 : /fri/hh/secession
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /fri/hh/fri/hh/main.fri?secession
+------------------------------------------------------------
+* 파트너 유저 요청
+요청내용 : /fri/hh/partner.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 파트너 승인 요청
+요청내용 : /fri/hh/partnerproc
+파라미터 : 
 컨트롤러 : com.fridgeCare.fri.hh.HController
 뷰	  : 비동기통신
 ------------------------------------------------------------
@@ -141,3 +212,22 @@
 -------------------------------------------------------------------------------
 
 
+------------------------------------------------------------
+* 레시피작성 페이지 요청
+요청내용 : /fri/joo/recipeAdd.fri
+파라미터 : 
+컨트롤러 : com.fridgeCare.fri.hh.HController
+뷰	  : /WEB-INF/views/com/fridgeCare/fri/joo/recipeAdd.jsp
+------------------------------------------------------------
+* 레시피 재료 저장 요청
+요청내용 : /fri/joo/recipeIngred.fri
+파라미터 : JooVO jVO
+컨트롤러 : com.fridgeCare.fri.joo.JooController
+뷰	  : 비동기통신
+------------------------------------------------------------
+* 레시피 저장 요청
+요청내용 : /fri/joo/recipeAddProc.fri
+파라미터 : JooVO jVO, JTumbVO jtVO
+컨트롤러 : com.fridgeCare.fri.joo.JooController
+뷰	  : /fri/juhyun/recipe/resipiPage.fri
+------------------------------------------------------------

@@ -243,6 +243,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 			<c:if test="${SID == RESIPI.id}">
 				<div class="w3-col">
 					<div class="w3-teal w3-round-large w3-center dimension7 w3-padding w3-margin-top w3-button w3-hover-cyan change05bgc" id="deletebtn">삭제</div>
+					<span class="w3-hide">${RESIPI.bno}</span>
 				</div>
 			</c:if>
 		</div>

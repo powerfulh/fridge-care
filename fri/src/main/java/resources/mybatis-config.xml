@@ -50,6 +50,8 @@
 		<mapper resource="com/fridgeCare/fri/joo/jooSQL.xml"/>
 		
 		<mapper resource="com/fridgeCare/fri/hyunuk/SearchSQL.xml"/>
+		
+		<mapper resource="com/fridgeCare/fri/king/sql.xml"/>
 	</mappers>
 	
 </configuration>

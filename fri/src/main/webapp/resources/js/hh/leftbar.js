@@ -6,6 +6,8 @@ $(function(){
 		break;
 		case 'fail':alert('회원정보가 맞지 않습니다');
 		break;
+		case 'deleteR':alert('레시피가 삭제되었습니다');
+		break;
 	}
 	var rid = $('#saverid').html();
 	if(rid != null && rid !=''){

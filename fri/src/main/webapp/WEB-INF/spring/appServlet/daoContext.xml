@@ -11,4 +11,6 @@
 	<bean id="jhDao" class="com.fridgeCare.fri.juhyun.DAO"></bean>
 	<bean id="sDao" class="com.fridgeCare.fri.hyunuk.SearchDao"></bean>
 	<bean id="jDao" class="com.fridgeCare.fri.joo.JooDao"></bean>
+	
+	<bean id="masterdao" class="com.fridgeCare.fri.king.DAO"></bean>
 </beans>

@@ -279,7 +279,7 @@ public class HController {
 			int AN = (int) (9999 - Math.random()*5000);
 			cnt = hdao.newAN(AN);
 			if(cnt == 0) {
-				view = "{\"result\" : \"잠시후 다시 시도해라\"}";
+				view = "{\"result\" : \"잠시후 다시 시도해주세요\"}";
 				System.out.println("error occur");
 			}else {
 				s.setAttribute("changer", id);
@@ -319,7 +319,7 @@ public class HController {
 		mv.setView(rv);
 		return mv;
 	}
-	@RequestMapping("/secession") // fri 안붙여도 잘 되네 개꿀
+	@RequestMapping("/secession")
 	public ModelAndView secession(ModelAndView mv , RedirectView rv , HttpSession s) {
 		rv.setUrl("/fri/hh/main.fri?secession");
 		String sid = (String) s.getAttribute("SID");

@@ -14,12 +14,6 @@ $(document).ready(function(){
 	});
 	
 	$('#lbtn').click(function(){
-/*		var bno = $('#lfrm').children().first().val();
-		var mno = $('#lfrm').children().last().val();
-		
-		alert(bno);
-		alert(mno);
-*/		
 		var lcnt = $('#lfrm').children().last().val();
 		
 		if(lcnt == '1'){
@@ -67,5 +61,13 @@ $(document).ready(function(){
 	$('.pagebtn').click(function(){
 		$('#whatpage').attr('value' , $(this).html());
 		$('#pageform').submit();
+	});
+	
+	$('#deletebtn').click(function(){
+		var Dconfirm = confirm('정말 삭제하시겠습니까?');
+		if(Dconfirm){
+			var thisbno = $(this).next().html();
+			location.href = '/fri/king/deleteR.fri?bno=' + thisbno;
+		}
 	});
 });
