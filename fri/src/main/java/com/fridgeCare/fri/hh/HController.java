@@ -339,7 +339,7 @@ public class HController {
 		String view = "{\"result\" : \"OK\"}";
 		String sid = (String) s.getAttribute("SID");
 		cnt = hdao.getboardwritecount(sid);
-		if(cnt < 1) {
+		if(cnt < 15) {
 			view = "{\"result\" : \"NO\"}";
 		}
 		return view;
