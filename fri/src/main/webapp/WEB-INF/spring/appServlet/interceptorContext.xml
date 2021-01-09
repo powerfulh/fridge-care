@@ -52,6 +52,8 @@
 			<exclude-mapping path="/hyunuk/selected.fri"/>
 
 			<exclude-mapping path="/joo/notice.fri"/>
+			
+			<exclude-mapping path="/king/FBdetail.fri"/>
 			<beans:ref bean="LoginCheck"/>
 		</interceptor>
 		<interceptor>

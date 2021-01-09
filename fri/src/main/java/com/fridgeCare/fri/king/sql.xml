@@ -9,4 +9,24 @@
 	<select id="updateBisshow" parameterType="int">
 		update board set isshow = 'N' where bno = #{bno}
 	</select>
+	
+	<select id="insertFB" parameterType="ivo">
+		insert INTO feedback(
+		n , writer , category , body , title)VALUES(
+		(select max(n) from feedback)+1 , #{inputid} , #{inputselect} , #{inputbody} , #{inputtitle})
+	</select>
+	
+	<select id="insertFBdefault">
+		insert INTO feedback(
+		n , category , body , isshow , title)VALUES(
+		1000 , 1 , 'make 1000' , 'N' , 'defaultdata')
+	</select>
+	
+	<select id="FBmaxn" resultType="int">
+		select max(n) from feedback
+	</select>
+	
+	<select id="selectFB" resultType="fbvo" parameterType="int">
+		select * from feedback where n = #{target}
+	</select>
 </mapper>

@@ -152,6 +152,7 @@ span.activepage{
       
       	<form method="GET" action="/fri/juhyun/recipe/resipiPage.fri" class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-border" id="frm">
     		<input type="hidden" name="bno" id="bno">
+    		<h2>파트너 레시피 게시판</h2>
       		<c:forEach var="board" items="${BOARD}">
       		
 			<div class="w3-col m11 w3-border-bottom w3-button w3-margin-left w3-margin-top w3-margin-bottom btn">

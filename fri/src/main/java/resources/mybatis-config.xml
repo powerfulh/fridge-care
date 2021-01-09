@@ -37,6 +37,8 @@
 	    <typeAlias alias="inVO" type="com.fridgeCare.fri.hyunuk.vo.IngredVO"/>
      	<typeAlias alias="sVO" type="com.fridgeCare.fri.hyunuk.vo.SearchVO"/>
      	<typeAlias alias="gVO" type="com.fridgeCare.fri.hyunuk.vo.GetVO"/>
+
+     	<typeAlias alias="fbvo" type="com.fridgeCare.fri.king.vo.FBVO"/>
 	</typeAliases>
 
 	<!-- 매퍼로 등록된 xml들은 위에 등록된 타입들의 변수명을 인식할수 있게 된다 -->

@@ -128,24 +128,24 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     
 <!-- Middle Column -->
     <div class="w3-col m9">
-      	<div class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding">
+      	<form class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding" action="/fri/king/writeFBproc.fri">
 		<!-- 중앙 작업 -->
 			<div class="w3-red">
-				<select>
-					<option>건의사항
-					<option>재료추가요청
-					<option>문의사항
+				<select name="inputselect">
+					<option value="1">건의사항
+					<option value="2">재료추가요청
+					<option value="3">문의사항
 				</select>
-				<input placeholder="input title" class="w50p">
+				<input placeholder="input title" class="w50p" required name="inputtitle" maxlength="100">
 			</div>
 			<div class="w3-blue w3-margin-top">
-				<textarea rows="5" cols="70" maxlength="300"></textarea>
+				<textarea rows="5" cols="70" maxlength="300" required name="inputbody"></textarea>
 			</div>
 			<div class="w3-red w3-center">
-				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/king/writeFB.fri">글쓰기</a>
+				<input class="w3-light-blue w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" type="submit">
 			</div>
 		<!-- End Middle Column -->
-		</div>
+		</form>
     
   <!-- End Grid -->
 	</div>

@@ -189,19 +189,6 @@ body{
       </div>
       <br>
       
-      
-      <div class="w3-card w3-round w3-white dimension1 w3-hide">
-        <div class="w3-container">
-        	<div class="w3-red h240 w3-margin-bottom">
-	        	<p>채팅내용 w3-red 는 기능 구현후 지울거임
-        	</div>
-        	<input class="dimension1">
-        </div>
-      </div>
-      <br>
-      
-      
-      
     <!-- End Right Column -->
     </div>
     

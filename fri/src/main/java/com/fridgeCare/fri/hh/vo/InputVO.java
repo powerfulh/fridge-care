@@ -2,8 +2,26 @@ package com.fridgeCare.fri.hh.vo;
 
 
 public class InputVO {
-	String inputid , inputpw , inputgen , inputmail , inputtel;
+	String inputid , inputpw , inputgen , inputmail , inputtel , inputtitle , inputbody , inputselect;
 	int inputage , inputloc;
+	public String getInputtitle() {
+		return inputtitle;
+	}
+	public void setInputtitle(String inputtitle) {
+		this.inputtitle = inputtitle;
+	}
+	public String getInputbody() {
+		return inputbody;
+	}
+	public void setInputbody(String inputbody) {
+		this.inputbody = inputbody;
+	}
+	public String getInputselect() {
+		return inputselect;
+	}
+	public void setInputselect(String inputselect) {
+		this.inputselect = inputselect;
+	}
 	public String getInputid() {
 		return inputid;
 	}

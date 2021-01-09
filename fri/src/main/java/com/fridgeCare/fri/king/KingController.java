@@ -1,8 +1,6 @@
 package com.fridgeCare.fri.king;
 
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,9 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.king.vo.FBVO;
 @Controller
 @RequestMapping("/king")
 public class KingController {
@@ -20,10 +20,10 @@ public class KingController {
 	static Logger logger = LoggerFactory.getLogger(KingController.class);
 	@Autowired
 	DAO masterdao;
-	@RequestMapping("/joinpage.fri")
-	public String joinpage() {
+	@RequestMapping("/writeFB")
+	public String writeFB() {
 		
-		return "hh/joinpage";
+		return "king/writeFB";
 	}
 	@RequestMapping("/pwfind.fri")
 	public String pwfind() {
@@ -50,84 +50,43 @@ public class KingController {
 		mv.setView(rv);
 		return mv;
 	}
-	@RequestMapping("/idCheck.fri")
-	@ResponseBody
-	public String idcheck(String id) {
-		String view = "{\"result\" : \"NO\"}";
-		cnt = 0;
-		if(cnt == 0) {
-			view = "{\"result\" : \"OK\"}";
-		}
-		return view;
-	}
-	@RequestMapping("/mailcheck.fri")
-	@ResponseBody
-	public HashMap<String, String> mailcheck(String mail) {
-		cnt = 0;
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("result", (cnt == 0? "OK" : "NO"));
-		return map;
-	}
-	@RequestMapping("/logout.fri")
-	public ModelAndView logout(ModelAndView mv , RedirectView rv , HttpSession s) {
-		rv.setUrl("/fri/");
-		s.removeAttribute("SID");
-		mv.setView(rv);
-		return mv;
-	}
-	@RequestMapping("/pwfindproc.fri")
-	@ResponseBody
-	public String pwfindproc(String AN) {
-		String view = "{\"result\" : \"OK\"}";
-		cnt = 0;
-		if(cnt == 0) {
-			view = "{\"result\" : \"NO\"}";
-		}
-		return view;
-	}
-	@RequestMapping("/pwchange.fri")
-	public String pwchange(HttpSession s) {
-		return "hh/pwchange";
-	}
-	@RequestMapping("/secession")
-	public ModelAndView secession(ModelAndView mv , RedirectView rv , HttpSession s) {
-		rv.setUrl("/fri/hh/main.fri?secession");
+	@RequestMapping("/writeFBproc")
+	public ModelAndView writeFBproc(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {
 		String sid = (String) s.getAttribute("SID");
-		cnt = 0;
-		if(cnt == 0) {
-			rv.setUrl("/fri/hh/myinfo.fri?secessionfail");
-		}else {
-			s.removeAttribute("SID");
-			logger.info(sid + "has leave fri");
-		}
-		mv.setView(rv);
-		return mv;
-	}
-	@RequestMapping("/partner.fri")
-	@ResponseBody
-	public String partnercall(HttpSession s) {
-		String view = "{\"result\" : \"OK\"}";
-//		String sid = (String) s.getAttribute("SID");
-		cnt = 0;
-		if(cnt < 1) {
-			view = "{\"result\" : \"NO\"}";
-		}
-		return view;
-	}
-	@RequestMapping("/partnerproc")
-	@ResponseBody
-	public String partnerproc(HttpSession s) {
-		String view = "{\"result\" : \"OK\"}";
-//		String sid = (String) s.getAttribute("SID");
-		cnt = 0;
-		if(cnt < 1) {
-			view = "{\"result\" : \"NO\"}";
-		}else {
-			cnt = 0;
+		ivo.setInputid(sid);
+		try {
+			cnt = masterdao.writeFBproc(ivo);
 			if(cnt == 0) {
-				view = "{\"result\" : \"NO\"}";
+				System.out.println("FB insert fail");
+			}else {
+				cnt = masterdao.maxFBn();
+				rv.setUrl("/fri/king/FBdetail.fri?target=" + cnt);
+			}
+		} catch (Exception e) {
+			cnt = masterdao.FBdefaultdata();
+			if(cnt == 0) {
+				System.out.println("FB defaultdata insert fail");
+			}else {
+				try {
+					cnt = masterdao.writeFBproc(ivo);
+					if(cnt == 0) {
+						System.out.println("FB insert fail");
+					}else {
+						cnt = masterdao.maxFBn();
+						rv.setUrl("/fri/king/FBdetail.fri?target=" + cnt);
+					}
+				}catch(Exception e2) {
+					e2.printStackTrace();
+				}
 			}
 		}
-		return view;
+		mv.setView(rv);
+		return mv;
+	}
+	@RequestMapping("/FBdetail")
+	public ModelAndView FBdetail(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
+		FBVO fbvo = masterdao.getFB(target);
+		mv.addObject("FBVO", fbvo);
+		return mv;
 	}
 }

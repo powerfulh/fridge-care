@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fridgeCare.fri.joo.vo.*;
+import com.fridgeCare.fri.king.vo.FBVO;
 
 @Controller
 public class JooController {
@@ -41,7 +42,7 @@ public class JooController {
 	
 	@RequestMapping("/joo/notice.fri")
 	public ModelAndView veiwNotice(ModelAndView mv, JNoticeVO jnVO) {
-		List<JNoticeVO> list = jDao.getNotice();
+		List<FBVO> list = jDao.getNotice();
 		mv.addObject("LIST", list);
 
 		List<JNoticeVO> flist = jDao.getFaq();
@@ -50,7 +51,7 @@ public class JooController {
 		List<JNoticeVO> qlist = jDao.getQna();
 		mv.addObject("QLIST", qlist);
 		
-		mv.setViewName("joo/jooNotice");
+		mv.setViewName("king/feedback");
 		return mv;
 	}
 	

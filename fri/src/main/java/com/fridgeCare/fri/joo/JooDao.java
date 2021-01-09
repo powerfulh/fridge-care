@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.fridgeCare.fri.joo.vo.*;
+import com.fridgeCare.fri.king.vo.FBVO;
 
 public class JooDao {
 	@Autowired
@@ -35,8 +36,8 @@ public class JooDao {
 		return sqlSession.selectOne("jSQL.getThumb", bno);
 	}
 	
-	//고객센터 공지사항 가져오기
-	public List<JNoticeVO> getNotice(){
+	//모든 피드백 리스트 ㅡ 킹
+	public List<FBVO> getNotice(){
 		return sqlSession.selectList("jSQL.getNotice");
 	}
 	

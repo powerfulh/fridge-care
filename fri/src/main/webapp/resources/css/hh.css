@@ -115,6 +115,21 @@ input.radio30{
 .w50p{
 	width:50%;
 }
+.w40p{
+	width:40%;
+}
+.w30p{
+	width:30%;
+}
+.w20p{
+	width:20%;
+}
+.w15p{
+	width:15%;
+}
+.w10p{
+	width:10%;
+}
 .h100p{
 	height:100%;
 }
@@ -167,4 +182,7 @@ span.activepage{
 }
 .change05bgc{
 	transition: background-color .5s;
+}
+.clickable{
+	cursor:pointer;
 }

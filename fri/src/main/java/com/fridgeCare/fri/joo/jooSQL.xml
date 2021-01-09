@@ -69,14 +69,9 @@
 			AND tno = #{tno}
 	</select>
 	
-	<select id="getNotice" resultType="jnVO">
-		SELECT
-			nno, ntitle, nbody, ndate, nclick
-		FROM 
-			notice
-		WHERE
-			nisshow = 'Y'
-			AND ncode = 1
+	<select id="getNotice" resultType="fbvo">
+		select * from feedback
+		where isshow = 'Y'
 	</select>
 	
 	<select id="getFaq" resultType="jnVO">

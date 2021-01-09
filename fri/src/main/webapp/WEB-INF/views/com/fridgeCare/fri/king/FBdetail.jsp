@@ -132,29 +132,22 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 		<!-- 중앙 작업 -->
 			<h2>고객 센터</h2>
 			<hr>
-			<div class="">
-				<div class="inline w3-blue w10p">카테고리</div>
-				<div class="inline w3-green w50p">제목</div>
-				<div class="inline w3-blue w15p">작성자</div>
-				<div class="inline w3-green w20p">작성 날짜</div>
+			<h3>${FBVO.title}</h3>
+			<div>
+				<div class="w40p inline">카테고리:${FBVO.scategory}</div>
+				<div class="w40p inline">작성자:${FBVO.writer}</div>
 			</div>
-			<c:forEach var="data" items="${LIST}">
-				<div class="change05bgc clickable w3-margin-top FBbtn">
-					<span class="w3-hide">${data.n}</span>
-					<div class="w10p inline">${data.scategory}</div>
-					<div class="w50p inline">${data.title}</div>
-					<div class="inline w15p">${data.writer}</div>
-					<div class="inline w20p">${data.sdate}</div>
-				</div>
-			</c:forEach>
-			<c:if test="${not empty SID}">
-		      	<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/king/writeFB.fri">글쓰기</a>
-			</c:if>
+			<div class="w3-border w3-margin-top w3-padding">
+				${FBVO.body}
+			</div>
+			<div class="w3-center">
+				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/joo/notice.fri">목록</a>
+			</div>
 		<!-- End Middle Column -->
-    </div>
+		</div>
     
   <!-- End Grid -->
-  </div>
+	</div>
   
 <!-- End Page Container -->
 <!-- </div> -->
