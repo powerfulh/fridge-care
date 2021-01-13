@@ -2,6 +2,8 @@ package com.fridgeCare.fri.joo;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +43,8 @@ public class JooController {
 	}
 	
 	@RequestMapping("/joo/notice.fri")
-	public ModelAndView veiwNotice(ModelAndView mv, JNoticeVO jnVO) {
+	public ModelAndView veiwNotice(ModelAndView mv, JNoticeVO jnVO , HttpSession s) {
+		s.setAttribute("HOME", "joo/notice.fri?");
 		List<FBVO> list = jDao.getNotice();
 		mv.addObject("LIST", list);
 

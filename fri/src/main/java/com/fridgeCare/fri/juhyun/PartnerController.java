@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fridgeCare.fri.juhyun.vo.PartnerVO;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 @RequestMapping("/juhyun/partner")
@@ -18,9 +20,9 @@ public class PartnerController {
 	
 	// 보드 리스트 전담 처리 함수
 	@RequestMapping(value="/partner.fri", method=RequestMethod.GET)
-	public ModelAndView partnerBoard(ModelAndView mv, PageUtil page) {
+	public ModelAndView partnerBoard(ModelAndView mv, PageUtil page , HttpSession s) {
 		int total = pDao.getBoardCnt();
-		
+		s.setAttribute("HOME", "juhyun/partner/partner.fri?");
 		page.setTotalCount(total);
 		page.setPage();
 		

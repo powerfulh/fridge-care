@@ -28,7 +28,7 @@ public class HyunukController {
 	@RequestMapping("/search.fri")
 	public ModelAndView getList(ModelAndView mv, SearchVO sVO, IngredVO inVO, HttpSession session) {
 		mv.setViewName("hyunuk/search");
-				
+		session.setAttribute("HOME", "hyunuk/search.fri?");
 		List<IngredVO> ingred = sDao.getIngredient(inVO);
 		mv.addObject("LIST", ingred);
 		return mv;

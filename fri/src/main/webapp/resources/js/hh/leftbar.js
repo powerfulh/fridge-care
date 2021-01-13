@@ -1,13 +1,17 @@
 $(function(){
 	var parameter = location.search;
 	var parameter = parameter.substr(1);
-	switch(parameter){
-		case 'removerid':localStorage.removeItem('RID');
-		break;
-		case 'fail':alert('회원정보가 맞지 않습니다');
-		break;
-		case 'deleteR':alert('레시피가 삭제되었습니다');
-		break;
+	var PC = parameter.indexOf('removerid'); // parameter check
+	if(PC != -1){
+		localStorage.removeItem('RID');
+	}
+	PC = parameter.indexOf('fail');
+	if(PC != -1){
+		alert('회원정보가 맞지 않습니다');
+	}
+	PC = parameter.indexOf('deleteR');
+	if(PC != -1){
+		alert('레시피가 삭제되었습니다');
 	}
 	var rid = $('#saverid').html();
 	if(rid != null && rid !=''){

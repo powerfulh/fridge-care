@@ -33,11 +33,13 @@ public class HController {
 	static Logger logger = LoggerFactory.getLogger(HController.class);
 	@Autowired
 	DAO hdao;
+	String home;
 	@RequestMapping("/main.fri")
 	public String getMain(HttpSession s , HttpServletRequest request) {
 		String sid = (String) s.getAttribute("SID");
 		LatelyUploadVO luvo = hdao.getLUVO();
 		SideRankVO srvo = hdao.getWR();
+		s.setAttribute("HOME", "hh/main.fri?");
 		try {
 			if(luvo.getTname() == null) {
 				luvo.setTname("noimage.jpg");
@@ -204,10 +206,11 @@ public class HController {
 	}
 	@RequestMapping("/logincheck.fri")
 	public ModelAndView logincheck(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo , String idcookie) {
-		rv.setUrl("/fri/hh/main.fri?setrid=" + ivo.getInputid());
+		home = (String) s.getAttribute("HOME");
+		rv.setUrl("/fri/" + home + "setrid=" + ivo.getInputid());
 		cnt = hdao.logincheck(ivo);
 		if(cnt == 0) {
-			rv.setUrl("/fri/hh/main.fri?fail");
+			rv.setUrl("/fri/" + home + "fail");
 		}else {
 			s.setAttribute("SID", ivo.getInputid());
 			cnt = hdao.submitCondate(ivo.getInputid());
@@ -215,7 +218,7 @@ public class HController {
 				System.out.println("submit condate fail");
 			}
 			if(idcookie == null) {
-				rv.setUrl("/fri/hh/main.fri?removerid");
+				rv.setUrl("/fri/" + home + "removerid");
 			}
 		}
 		mv.setView(rv);
@@ -223,35 +226,11 @@ public class HController {
 	}
 	@RequestMapping("/logout.fri")
 	public ModelAndView logout(ModelAndView mv , RedirectView rv , HttpSession s) {
-		rv.setUrl("/fri/");
+		home = (String) s.getAttribute("HOME");
+		rv.setUrl("/fri/" + home);
 		s.removeAttribute("SID");
 		mv.setView(rv);
 		return mv;
-	}
-	@RequestMapping("/noticelist.fri")
-	public String getNoticeList(HttpSession s) {
-		String sid = (String) s.getAttribute("SID");
-		LatelyUploadVO luvo = hdao.getLUVO();
-		SideRankVO srvo = hdao.getWR();
-		if(luvo.getTname() == null) {
-			luvo.setTname("noimage.jpg");
-		}
-		if(luvo.getSavename() == null) {
-			luvo.setSavename("noimage.jpg");
-		}
-		s.setAttribute("LUVO", luvo);
-		s.setAttribute("WVO", srvo);
-		srvo = hdao.getMR();
-		s.setAttribute("MVO", srvo);
-		if(sid != null) {
-			String tname = hdao.getThumb(sid);
-			if(tname == null) {
-				s.setAttribute("AVT", "noimage.jpg");
-			}else {
-				s.setAttribute("AVT", tname);
-			}
-		}
-		return "hh/main";
 	}
 	@RequestMapping("transtest.fri")
 	@Transactional

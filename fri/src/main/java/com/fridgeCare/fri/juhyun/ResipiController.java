@@ -28,6 +28,7 @@ public class ResipiController {
 									HttpSession session) {
 		int count = 0;
 		int mno;
+		session.setAttribute("HOME", "juhyun/recipe/resipiPage.fri?bno=" + rVO.getBno() + "&");
 		int cnt = rDao.addCnt(rVO.getBno());
 		if(cnt == 0) {
 			System.out.println("view count proc fail");
