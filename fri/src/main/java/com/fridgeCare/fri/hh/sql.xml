@@ -117,4 +117,9 @@
 	<select id="updategrade" parameterType="string">
 		update member set grade = 2 where id = #{sid}
 	</select>
+	
+	<select id="selectadmin" parameterType="string" resultType="int">
+		select count(*) from member where admin = 'Y'
+		and id = #{id}
+	</select>
 </mapper>

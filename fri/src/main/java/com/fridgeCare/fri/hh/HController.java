@@ -220,6 +220,10 @@ public class HController {
 			if(idcookie == null) {
 				rv.setUrl("/fri/" + home + "removerid");
 			}
+			cnt = hdao.adminlogin(ivo.getInputid());
+			if(cnt == 1) {
+				s.setAttribute("ADMIN", ivo.getInputid());
+			}
 		}
 		mv.setView(rv);
 		return mv;
@@ -229,6 +233,7 @@ public class HController {
 		home = (String) s.getAttribute("HOME");
 		rv.setUrl("/fri/" + home);
 		s.removeAttribute("SID");
+		s.removeAttribute("ADMIN");
 		mv.setView(rv);
 		return mv;
 	}

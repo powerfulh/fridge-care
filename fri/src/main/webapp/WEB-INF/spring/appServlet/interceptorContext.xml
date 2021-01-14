@@ -13,6 +13,7 @@
 		
 	<beans:bean id="LoginCheck" class="com.fridgeCare.fri.interceptor.LoginCheck"/>
 	<beans:bean id="cencerCheck" class="com.fridgeCare.fri.interceptor.CencerCheck" />
+	<beans:bean id="adminCheck" class="com.fridgeCare.fri.interceptor.AdminCheck"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/**/*.fri"/>
@@ -63,6 +64,10 @@
 	         <mapping path="/**/resipiReply.fri"/>
 	         <beans:ref bean="cencerCheck" />
   	    </interceptor>
-		
+		<interceptor>
+			<mapping path="/juhyun/admin/*.fri"/>
+			
+			<beans:ref bean="adminCheck"/>
+		</interceptor>
 	</interceptors>
 </beans:beans>

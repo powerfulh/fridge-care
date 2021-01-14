@@ -18,6 +18,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="/fri/js/juhyun/admin.js"></script>
 <script type="text/javascript" src="/fri/js/hh/leftbar.js"></script>
+<script type="text/javascript" src="/fri/js/hh/leftbar.js"></script>
 
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
@@ -74,7 +75,7 @@ span.activepage{
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">    
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
-		<h1><a href="/fridgeCare/">냉장고를 부탁해!</a></h1>
+		<h1><a href="/fri/hh/main.fri">냉장고를 부탁해!</a></h1>
 	</div>
   <!-- The Grid -->
   <div class="w3-row">

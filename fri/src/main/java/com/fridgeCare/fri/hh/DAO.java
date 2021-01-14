@@ -75,4 +75,7 @@ public class DAO {
 	public int partnerproc(String sid) {
 		return sqlSession.update("updategrade", sid);
 	}
+	public int adminlogin(String id) {
+		return sqlSession.selectOne("selectadmin", id);
+	}
 }
