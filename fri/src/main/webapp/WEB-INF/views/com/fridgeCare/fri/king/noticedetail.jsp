@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>project</title>
+<title>fri feedback</title>
 <link rel="stylesheet" href="/fri/css/w3.css">
 <link rel="stylesheet" href="/fri/css/cls.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
@@ -31,11 +31,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
 </head>
 <body class="">
-
-<form method="POST" action="/fri/joo/noticeAnswerProc.fri" id="frm1" name="frm1">
-	<input type="hidden" name="nupno" id="nupno" value="">
-	<input type="hidden" name="nbody" id="nbody" value="">
-</form>
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">    
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
@@ -131,103 +126,24 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <!-- End Left Column -->
     </div>
     
-<!-- Middle Column --> <!-- 작업할 곳 -->
-	<!-- 레시피 테이블 : 이름, 종류, 재료, 영상주소, 조리시간, 상황/
-		 이미지테이블 : 업로드 이름, 파일크기, 경로/
-		 썸내일 테이블 : 경로, 이름
-		 보드 테이블 : 제목  /
-		 바디 테이블 : 내용 -->
+<!-- Middle Column -->
     <div class="w3-col m9">
-      	<div class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right">
-      <!-- 이곳에 꿈과 희망을 펼치세요 -->
-      	<div class="w3-col btnfr">
-      		<h2 class="w3-button w3-teal nbtn">공지사항</h2>
-      		<h2 class="w3-button w3-teal fbtn w3-center">FAQ</h2>
-      		<h2 class="w3-button w3-green qbtn w3-right">QNA</h2>
-      	</div>
-      	<div class="notice" style="display: none;">
-			<div class="w3-col w3-padding table-list">
-				<div class="w3-col w3-center list">
-					<div class="w3-col hd">
-						<div class="w3-col m2 no">번 호</div>
-						<div class="w3-col m5 title">제 목</div>
-						<div class="w3-col m3 date">작 성 일</div>
-						<div class="w3-col m2 click">조회수</div>
-					</div>
-				<c:forEach var="data" items="${LIST}">
-					<div class="w3-col cont w3-border-bottom" id="${data.nno}">
-						<div class="w3-col m2 no">${data.nno}</div>
-						<div class="w3-col m5 title">${data.ntitle}</div>
-						<div class="w3-col m3 date">${data.sdate}</div>
-						<div class="w3-col m2 click">${data.nclick}</div>
-						<div class="w3-col w3-padding w3-margin-bottom body" style="display: none;"></div>
-					</div>
-				</c:forEach>
-				</div>
+      	<div class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding">
+		<!-- 중앙 작업 -->
+			<h2>공지사항</h2>
+			<hr>
+			<h3>${JNVO.ntitle}</h3>
+			<div class="w3-border w3-margin-top w3-padding w3-center">
+				${JNVO.nbody}
 			</div>
-		</div>
-		<div class="faq" style="display: none;">
-			<div class="w3-col w3-padding table-list">
-				<div class="w3-col w3-center list">
-					<div class="w3-col hd">
-						<div class="w3-col m2 no">번 호</div>
-						<div class="w3-col m5 title">제 목</div>
-						<div class="w3-col m3 date">작 성 일</div>
-						<div class="w3-col m2 click">조회수</div>
-					</div>
-				<c:forEach var="fdata" items="${FLIST}">
-					<div class="w3-col cont w3-border-bottom" id="${fdata.nno}">
-						<div class="w3-col m2 no">${fdata.nno}</div>
-						<div class="w3-col m5 title">${fdata.ntitle}</div>
-						<div class="w3-col m3 date">${fdata.sdate}</div>
-						<div class="w3-col m2 click">${fdata.nclick}</div>
-						<div class="w3-col w3-padding w3-margin-bottom body" style="display: none;"></div>
-					</div>
-				</c:forEach>
-				</div>
+			<div class="w3-center">
+				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/king/noticelist.fri">목록</a>
 			</div>
+		<!-- End Middle Column -->
 		</div>
-      	<div class="qna" style="display: none;">
-			<div class="w3-col w3-padding table-list">
-				<div class="w3-col w3-center list">
-					<div class="w3-col hd">
-						<div class="w3-col m2 no">번 호</div>
-						<div class="w3-col m5 title">제 목</div>
-						<div class="w3-col m3 date">작 성 일</div>
-						<div class="w3-col m2 click">조회수</div>
-					</div>
-				<c:forEach var="qdata" items="${QLIST}">
-					<div class="w3-col cont w3-border-bottom" id="${qdata.nno}">
-						<div class="w3-col">
-							<div class="w3-col m2 no">${qdata.nno}</div>
-							<div class="w3-col m5 title">${qdata.ntitle}</div>
-							<div class="w3-col m3 date">${qdata.sdate}</div>
-							<div class="w3-col m2 click">${qdata.nclick}</div>
-						</div>
-						<div class="w3-col" style="display: none;">
-							<div class="w3-col w3-padding w3-margin-bottom body"></div>
-							<div class="m2 w3-right w3-button w3-green w3-padding w3-margin-bottom body mbtn">답변달기</div>
-						</div>
-						<div class="w3-col w3-padding w3-margin-bottom w3-border-top" style="display: none;"></div>
-					</div>
-					<div class="w3-col w3-center" style="display: none;">
-						<div class="w3-center w700 inblock">
-							<h5 class="w3-purple w3-center w3-padding mb10">QnA 답변달기</h5>
-							<textarea class="w3-input w3-border h72" id="w${qdata.nno}"></textarea>
-							<span class="w3-col m2 w3-left w3-button w3-small w3-lime w3-hover-light-green w3-margin-bottom rbtn">닫기</span>
-							<span class="w3-col m2 w3-right w3-button w3-small w3-pink w3-hover-purple w3-margin-bottom wrbtn">완료</span>
-						</div>
-					</div>
-				</c:forEach>
-				</div>
-			</div>
-		</div>
-
-    <!-- End Middle Column -->
-    </div>
     
   <!-- End Grid -->
-  </div>
+	</div>
   
 <!-- End Page Container -->
 <!-- </div> -->

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.joo.vo.JNoticeVO;
 import com.fridgeCare.fri.king.vo.FBVO;
 
 public class DAO {
@@ -31,5 +32,8 @@ public class DAO {
 	}
 	public FBVO getFB(int target) {
 		return sqlSession.selectOne("selectFB", target);
+	}
+	public JNoticeVO getNotice(int target) {
+		return sqlSession.selectOne("selectnotice", target);
 	}
 }

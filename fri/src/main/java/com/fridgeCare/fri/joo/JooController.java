@@ -45,15 +45,10 @@ public class JooController {
 	@RequestMapping("/joo/notice.fri")
 	public ModelAndView veiwNotice(ModelAndView mv, JNoticeVO jnVO , HttpSession s) {
 		s.setAttribute("HOME", "joo/notice.fri?");
+		JNoticeVO jnvo = jDao.getLatelyNotice();
 		List<FBVO> list = jDao.getNotice();
+		mv.addObject("JNVO", jnvo);
 		mv.addObject("LIST", list);
-
-		List<JNoticeVO> flist = jDao.getFaq();
-		mv.addObject("FLIST", flist);
-		
-		List<JNoticeVO> qlist = jDao.getQna();
-		mv.addObject("QLIST", qlist);
-		
 		mv.setViewName("king/feedback");
 		return mv;
 	}

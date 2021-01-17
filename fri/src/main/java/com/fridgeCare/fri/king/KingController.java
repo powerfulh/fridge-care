@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.joo.vo.JNoticeVO;
 import com.fridgeCare.fri.king.vo.FBVO;
 @Controller
 @RequestMapping("/king")
@@ -25,30 +26,10 @@ public class KingController {
 		
 		return "king/writeFB";
 	}
-	@RequestMapping("/pwfind.fri")
-	public String pwfind() {
+	@RequestMapping("/noticelist")
+	public String Noticelist() {
 		
-		return "hh/pwfind";
-	}
-	@RequestMapping("/deleteR")
-	public ModelAndView myinfo(ModelAndView mv , RedirectView rv , HttpSession s , int bno) {
-		rv.setUrl("/fri/hh/main.fri?deleteR");
-		String sid = (String) s.getAttribute("SID");
-		String owner = masterdao.getOwnerID(bno);
-		System.out.println(sid);
-		System.out.println(owner);
-		if(sid.equals(owner)) {
-			cnt = masterdao.updateBisshow(bno);
-			if(cnt == 0) {
-				rv.setUrl("/fri/juhyun/recipe/resipiPage.fri?Dfail&bno=" + bno);
-			}else {
-				logger.info("board " + bno + " deleted");
-			}
-		}else {
-			rv.setUrl("/fri/juhyun/recipe/resipiPage.fri?Dfail&bno=" + bno);
-		}
-		mv.setView(rv);
-		return mv;
+		return "king/noticelist";
 	}
 	@RequestMapping("/writeFBproc")
 	public ModelAndView writeFBproc(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {
@@ -87,6 +68,12 @@ public class KingController {
 	public ModelAndView FBdetail(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
 		FBVO fbvo = masterdao.getFB(target);
 		mv.addObject("FBVO", fbvo);
+		return mv;
+	}
+	@RequestMapping("/noticedetail")
+	public ModelAndView noticedetail(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
+		JNoticeVO jnvo = masterdao.getNotice(target);
+		mv.addObject("JNVO", jnvo);
 		return mv;
 	}
 }

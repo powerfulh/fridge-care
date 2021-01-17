@@ -132,6 +132,14 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 		<!-- 중앙 작업 -->
 			<h2>고객 센터</h2>
 			<hr>
+			<h3>최신 공지사항</h3>
+			<div class="change05bgc clickable w3-margin-top w3-sand pt16 w3-hover-cyan" id="LNbtn">
+				<span class="w3-hide">${JNVO.nno}</span>
+				<div class="w50p inline">${JNVO.ntitle}</div>
+				<div class="inline w20p">${JNVO.sdate}</div>
+			</div>
+			<hr>
+			<h3>피드백 게시판</h3>
 			<div class="">
 				<div class="inline w3-blue w10p">카테고리</div>
 				<div class="inline w3-green w50p">제목</div>

@@ -74,27 +74,12 @@
 		where isshow = 'Y'
 	</select>
 	
-	<select id="getFaq" resultType="jnVO">
-		SELECT
-			nno, ntitle, ndate, nclick
-		FROM 
-			notice
-		WHERE
-			nisshow = 'Y'
-			AND ncode = 2
+	<select id="getLN" resultType="jnvo">
+		select * from notice
+		where nno = (select max(nno) from notice)
+		and nisshow = 'Y'
 	</select>
 
-	<select id="getQna" resultType="jnVO">
-		SELECT
-			nno, ntitle, ndate, nclick
-		FROM 
-			notice
-		WHERE
-			nisshow = 'Y'
-			AND ncode = 3
-			AND nupno = 0
-	</select>
-	
 	<select id="getNBody" resultType="jnVO" parameterType="jnVO">
 		select 
 		    n1.nno, n1.ntitle, n1.nbody, n1.nupno, n2.nbody subbody, n1.nclick
@@ -131,6 +116,5 @@
 		    #{nbody}, 3, #{nupno}
 		)
 	</insert>
-	
 	
 </mapper>

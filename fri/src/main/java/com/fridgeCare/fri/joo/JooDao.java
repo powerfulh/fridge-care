@@ -41,14 +41,8 @@ public class JooDao {
 		return sqlSession.selectList("jSQL.getNotice");
 	}
 	
-	//고객센터 자주질문 가져오기
-	public List<JNoticeVO> getFaq(){
-		return sqlSession.selectList("jSQL.getFaq");
-	}
-	
-	//고객센터 큐엔에이 가져오기
-	public List<JNoticeVO> getQna(){
-		return sqlSession.selectList("jSQL.getQna");
+	public JNoticeVO getLatelyNotice(){
+		return sqlSession.selectOne("jSQL.getLN");
 	}
 	
 	//고객센터 본문 가져오기

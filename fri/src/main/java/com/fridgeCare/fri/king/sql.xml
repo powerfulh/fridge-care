@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hsql">
+<mapper namespace="ksql">
 	<select id="ownercheck" resultType="string" parameterType="int">
 		select id from member where mno = (select bmno from board where bno = #{bno})
 	</select>
@@ -28,5 +28,9 @@
 	
 	<select id="selectFB" resultType="fbvo" parameterType="int">
 		select * from feedback where n = #{target}
+	</select>
+	
+	<select id="selectnotice" resultType="jnvo" parameterType="int">
+		select * from notice where nno = #{target}
 	</select>
 </mapper>

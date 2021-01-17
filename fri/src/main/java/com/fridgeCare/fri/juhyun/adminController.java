@@ -36,10 +36,10 @@ public class adminController {
 	
 	@RequestMapping("/addNoticeProc.fri")
 	public ModelAndView addNoticeProc(ModelAndView mv, AdminVO aVO) {
-		System.out.println("공지사항 등록 컨트롤러 실행");
+		//공지사항 추가
 		if((aVO.getTitle() != null) || (aVO.getBody() != null)) {
 			aDao.addNotice(aVO);
-			System.out.println("등록 완료");
+			System.out.println("공지사항 등록 완료");
 		}
 		
 		mv.setViewName("juhyun/admin/admin");

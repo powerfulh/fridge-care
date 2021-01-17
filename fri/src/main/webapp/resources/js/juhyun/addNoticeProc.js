@@ -1,8 +1,4 @@
 $(document).ready(function(){
-	
-	$('#wbtn1').click(function(){
-		$('#frm1').submit();
-	});
 	$('#wbtn2').click(function(){
 		$('#frm2').submit();
 	});
