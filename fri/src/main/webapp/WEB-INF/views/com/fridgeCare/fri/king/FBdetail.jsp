@@ -141,7 +141,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 				${FBVO.body}
 			</div>
 			<div class="w3-center">
-				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/joo/notice.fri">목록</a>
+				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/joo/notice.fri?page=1">목록</a>
 			</div>
 		<!-- End Middle Column -->
 		</div>

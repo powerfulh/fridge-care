@@ -133,6 +133,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 			<h2>공지사항</h2>
 			<hr>
 			<h3>${JNVO.ntitle}</h3>
+			<div>
+				<div class="w80p inline"></div>
+				<div class="inline">공지일:${JNVO.sdate}</div>
+			</div>
 			<div class="w3-border w3-margin-top w3-padding w3-center">
 				${JNVO.nbody}
 			</div>
@@ -151,8 +155,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-center w3-theme-d3">
-  <h5>Footer</h5>
+<footer class="w3-container w3-theme-d3 w3-padding-16">
+	<a href="/fri/king/noticelist.fri">공지사항</a>
+</footer>
+<footer class="w3-container w3-theme-d5">
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 </body>

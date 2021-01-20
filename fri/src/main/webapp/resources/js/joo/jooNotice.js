@@ -5,4 +5,7 @@ $(document).ready(function(){
 	$('#LNbtn').click(function(){
 		location.href = '/fri/king/noticedetail.fri?target=' + $(this).children().html();
 	});
+	$('.noticebtn').click(function(){
+		location.href = '/fri/king/noticedetail.fri?target=' + $(this).children().html();
+	});
 });

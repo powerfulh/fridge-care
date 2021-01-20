@@ -69,9 +69,15 @@
 			AND tno = #{tno}
 	</select>
 	
-	<select id="getNotice" resultType="fbvo">
-		select * from feedback
-		where isshow = 'Y'
+	<select id="getNotice" resultType="fbvo" parameterType="pvo">
+		select * from
+		(select n , writedate , writer , title , category , body , isshow , rownum rn
+		from
+		(select *
+		from feedback
+				where isshow = 'Y'
+				order by n desc))
+		where rn BETWEEN #{firstcontent} and #{lastcontent}
 	</select>
 	
 	<select id="getLN" resultType="jnvo">
@@ -117,4 +123,7 @@
 		)
 	</insert>
 	
+	<select id="FBcount" resultType="int">
+		select count(*) from feedback where isshow = 'Y'
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.fridgeCare.fri.king;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,8 @@ public class DAO {
 	}
 	public JNoticeVO getNotice(int target) {
 		return sqlSession.selectOne("selectnotice", target);
+	}
+	public List<JNoticeVO> noticelist(){
+		return sqlSession.selectList("noticelist");
 	}
 }

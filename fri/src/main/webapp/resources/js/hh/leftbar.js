@@ -36,6 +36,6 @@ $(function(){
 		$(location).attr('href' , '/fri/hh/myinfo.fri');
 	});
 	$('#fqabtn').click(function(){
-		$(location).attr('href' , '/fri/joo/notice.fri');
+		$(location).attr('href' , '/fri/joo/notice.fri?page=1');
 	});
 });

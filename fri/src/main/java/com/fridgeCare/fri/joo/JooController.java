@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.fridgeCare.fri.hh.util.Hoonpage;
 import com.fridgeCare.fri.joo.vo.*;
 import com.fridgeCare.fri.king.vo.FBVO;
+import com.fridgeCare.fri.king.vo.PageVO;
 
 @Controller
 public class JooController {
@@ -20,7 +22,7 @@ public class JooController {
 	JooDao jDao;
 	@Autowired
 	JooService jSrvc;
-	
+	PageVO pvo;
 	@RequestMapping("/joo/recipeAdd.fri")
 	public ModelAndView addRecipe(ModelAndView mv) {
 		List<String> list = jDao.getInList();
@@ -42,13 +44,23 @@ public class JooController {
 		return mv;
 	}
 	
-	@RequestMapping("/joo/notice.fri")
-	public ModelAndView veiwNotice(ModelAndView mv, JNoticeVO jnVO , HttpSession s) {
-		s.setAttribute("HOME", "joo/notice.fri?");
+	@RequestMapping("/joo/notice.fri") // 고객센터요청
+	public ModelAndView viewNotice(ModelAndView mv, JNoticeVO jnVO , HttpSession s , int page) {
+		s.setAttribute("HOME", "joo/notice.fri?page=" + page + "&");
 		JNoticeVO jnvo = jDao.getLatelyNotice();
-		List<FBVO> list = jDao.getNotice();
 		mv.addObject("JNVO", jnvo);
+		int totalcount = jDao.feedbackcount();
+		int countforpage = 10;
+		int pageblockcount = 3;
+		Hoonpage pageutil = new Hoonpage(totalcount, countforpage, pageblockcount, page);
+		pvo = new PageVO();
+		pvo.setFirstcontent(pageutil.Pageset());
+		pvo.setLastcontent(countforpage);
+		List<FBVO> list = jDao.getNotice(pvo);
 		mv.addObject("LIST", list);
+		ArrayList<Integer> pagelist = pageutil.getoddfixblock();
+		mv.addObject("pageutil", pageutil);
+		mv.addObject("pagelist", pagelist);
 		mv.setViewName("king/feedback");
 		return mv;
 	}

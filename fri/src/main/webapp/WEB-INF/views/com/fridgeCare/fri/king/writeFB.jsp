@@ -43,7 +43,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <!-- Profile -->
       <c:if test="${not empty SID}">
       	<span class="w3-hide" id="saverid">${param.setrid}</span>
-	      <div class="w3-card w3-round w3-white">
+	    <div class="w3-card w3-round w3-white">
 	      	<c:if test="${GRADE == 1}">
 		        <div class="w3-container">
 		         <h4 class="w3-center">My Profile</h4>
@@ -65,7 +65,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 		         <p class="w3-btn w3-border w3-hover-blue change05bgc" id="logoutbtn"><i class="fa fa-sign-out fa-fw w3-margin-right w3-text-theme"></i> 로그아웃</p>
 		        </div>
 	      	</c:if>
-	      </div>
+	  	</div>
       </c:if>
       <br>
       <!-- 로그인 안했을때 -->
@@ -130,7 +130,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <div class="w3-col m9">
       	<form class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding" action="/fri/king/writeFBproc.fri">
 		<!-- 중앙 작업 -->
-			<div class="w3-red">
+			<div class="">
 				<select name="inputselect">
 					<option value="1">건의사항
 					<option value="2">재료추가요청
@@ -138,10 +138,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 				</select>
 				<input placeholder="input title" class="w50p" required name="inputtitle" maxlength="100">
 			</div>
-			<div class="w3-blue w3-margin-top">
-				<textarea rows="5" cols="70" maxlength="300" required name="inputbody"></textarea>
+			<div class="w3-margin-top">
+				<textarea rows="7" cols="70" maxlength="300" required name="inputbody"></textarea>
 			</div>
-			<div class="w3-red w3-center">
+			<div class="w3-center">
 				<input class="w3-light-blue w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" type="submit">
 			</div>
 		<!-- End Middle Column -->
@@ -156,8 +156,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-center w3-theme-d3">
-  <h5>Footer</h5>
+<footer class="w3-container w3-theme-d3 w3-padding-16">
+	<a href="/fri/king/noticelist.fri">공지사항</a>
+</footer>
+<footer class="w3-container w3-theme-d5">
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 </body>

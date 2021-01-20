@@ -1,6 +1,8 @@
 package com.fridgeCare.fri.king;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,9 +29,12 @@ public class KingController {
 		return "king/writeFB";
 	}
 	@RequestMapping("/noticelist")
-	public String Noticelist() {
-		
-		return "king/noticelist";
+	public ModelAndView Noticelist(ModelAndView mv , RedirectView rv , HttpSession s) {
+		s.setAttribute("HOME", "king/noticelist.fri?");
+		List<JNoticeVO> list = masterdao.noticelist();
+		mv.addObject("LIST", list);
+		mv.setViewName("king/noticelist");
+		return mv;
 	}
 	@RequestMapping("/writeFBproc")
 	public ModelAndView writeFBproc(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {

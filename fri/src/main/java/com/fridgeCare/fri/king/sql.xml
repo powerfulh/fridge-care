@@ -33,4 +33,10 @@
 	<select id="selectnotice" resultType="jnvo" parameterType="int">
 		select * from notice where nno = #{target}
 	</select>
+	
+	<select id="noticelist" resultType="jnvo">
+		select * from notice
+		where nisshow = 'Y'
+		order by nno desc
+	</select>
 </mapper>

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.fridgeCare.fri.joo.vo.*;
 import com.fridgeCare.fri.king.vo.FBVO;
+import com.fridgeCare.fri.king.vo.PageVO;
 
 public class JooDao {
 	@Autowired
@@ -37,8 +38,8 @@ public class JooDao {
 	}
 	
 	//모든 피드백 리스트 ㅡ 킹
-	public List<FBVO> getNotice(){
-		return sqlSession.selectList("jSQL.getNotice");
+	public List<FBVO> getNotice(PageVO pvo){
+		return sqlSession.selectList("jSQL.getNotice" , pvo);
 	}
 	
 	public JNoticeVO getLatelyNotice(){
@@ -58,5 +59,8 @@ public class JooDao {
 	//큐엔에이 답변달기
 	public int insComm(JNoticeVO jnVO) {
 		return sqlSession.insert("jSQL.insComm", jnVO);
+	}
+	public int feedbackcount() {
+		return sqlSession.selectOne("FBcount");
 	}
 }

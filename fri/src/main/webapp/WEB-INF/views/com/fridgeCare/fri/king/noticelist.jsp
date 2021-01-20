@@ -121,7 +121,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 		<div class="w3-teal w3-round-large w3-center dimension7 w3-padding w3-margin-top w3-button w3-hover-cyan change05bgc" id="fqabtn">Feedback / Q &amp; A</div>
       </div>
       <br>
-      
     
     <!-- End Left Column -->
     </div>
@@ -130,53 +129,19 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <div class="w3-col m9">
       	<div class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding">
 		<!-- 중앙 작업 -->
-			<h2>고객 센터</h2>
+			<h2>공지사항</h2>
 			<hr>
-			<h3>최신 공지사항</h3>
-			<div class="change05bgc clickable w3-margin-top w3-sand pt16 w3-hover-cyan" id="LNbtn">
-				<span class="w3-hide">${JNVO.nno}</span>
-				<div class="w50p inline">${JNVO.ntitle}</div>
-				<div class="inline w20p">${JNVO.sdate}</div>
-			</div>
-			<hr>
-			<h3>피드백 게시판</h3>
-			<div class="">
-				<div class="inline w3-blue w10p">카테고리</div>
-				<div class="inline w3-green w50p">제목</div>
-				<div class="inline w3-blue w15p">작성자</div>
+			<div>
+				<div class="inline w3-blue w50p">제목</div>
 				<div class="inline w3-green w20p">작성 날짜</div>
 			</div>
 			<c:forEach var="data" items="${LIST}">
-				<div class="change05bgc clickable w3-margin-top FBbtn">
-					<span class="w3-hide">${data.n}</span>
-					<div class="w10p inline">${data.scategory}</div>
-					<div class="w50p inline">${data.title}</div>
-					<div class="inline w15p">${data.writer}</div>
+				<div class="change05bgc clickable w3-margin-top w3-sand pt16 w3-hover-cyan noticebtn">
+					<span class="w3-hide">${data.nno}</span>
+					<div class="w50p inline">${data.ntitle}</div>
 					<div class="inline w20p">${data.sdate}</div>
 				</div>
 			</c:forEach>
-			<div class="w3-center">
-				<form method="get" action="/fri/joo/notice.fri" id="pageform" class="w3-margin-top inline">
-					<input type="hidden" name="page" id="whatpage">
-					<a class="w3-btn inactivepage" href="/fri/joo/notice.fri?page=1">&laquo;</a>
-					<c:forEach var="page" items="${pagelist}">
-						<c:choose>
-							<c:when test="${page == pageutil.presentpage}">
-								<a class="activepage">${page}</a>
-							</c:when>
-							<c:when test="${page != pageutil.presentpage}">
-								<a class="w3-btn inactivepage" href="/fri/joo/notice.fri?page=${page}">${page}</a>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-					<a class="w3-btn inactivepage" href="/fri/joo/notice.fri?page=${pageutil.pagecount}">&raquo;</a>
-				</form>
-			</div>
-			<div>
-				<c:if test="${not empty SID}">
-			      	<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/king/writeFB.fri">글쓰기</a>
-				</c:if>
-			</div>
 		<!-- End Middle Column -->
     </div>
     
@@ -189,10 +154,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-	<a href="/fri/king/noticelist.fri">공지사항</a>
-</footer>
-<footer class="w3-container w3-theme-d5">
+<footer class="w3-container w3-center w3-theme-d3">
+  <h5>포트폴리오용도로 제작한 프로젝트입니다.</h5>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 </body>

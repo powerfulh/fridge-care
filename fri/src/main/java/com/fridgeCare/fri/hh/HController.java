@@ -62,8 +62,6 @@ public class HController {
 			}else {
 				s.setAttribute("AVT", tname);
 			}
-			MemberVO mvo = hdao.getmvo(sid);
-			s.setAttribute("GRADE", mvo.getGrade());
 		}
 		return "hh/main";
 	}
@@ -220,6 +218,8 @@ public class HController {
 			if(idcookie == null) {
 				rv.setUrl("/fri/" + home + "removerid");
 			}
+			MemberVO mvo = hdao.getmvo(ivo.getInputid());
+			s.setAttribute("GRADE", mvo.getGrade());
 			cnt = hdao.adminlogin(ivo.getInputid());
 			if(cnt == 1) {
 				s.setAttribute("ADMIN", ivo.getInputid());

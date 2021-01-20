@@ -163,17 +163,17 @@ input.radio30{
 .boldfont{
 	font-weight:bold;
 }
-span.inactivepage{
+a.inactivepage{
 	float: left;
 	padding: 8px 16px;
 	text-decoration: none;
 	transition: background-color .5s;
 	border: 1px solid #ddd;
 }
-span.inactivepage:hover{
+a.inactivepage:hover{
 	background-color: yellow;
 }
-span.activepage{
+a.activepage{
 	float: left;
 	padding: 8px 16px;
 	background-color: green;
