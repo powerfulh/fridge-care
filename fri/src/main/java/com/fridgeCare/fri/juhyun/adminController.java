@@ -26,8 +26,6 @@ public class adminController {
 		return mv;
 	}
 	
-	
-	
 	@RequestMapping("/addNotice.fri")
 	public ModelAndView addNotice(ModelAndView mv) {
 		mv.setViewName("juhyun/admin/addNotice");

@@ -168,7 +168,7 @@ span.activepage{
     <div class="w3-col m3 w3-button w3-border" id="noticebtn">공지사항</div>
     <div class="w3-col m3 w3-button w3-border" id="qnabtn">QnA</div>
     <div class="w3-col m3 w3-button w3-border" id="faqbtn">FAQ</div>
-    <form method="POST" action="/fri/juhyun/admin/addNoticeProc.fri" class="w3-col m9 w3-hide" id="frm1">
+    <form method="POST" action="/fri/juhyun/admin/addNoticeProc.fri" class="w3-col m9" id="frm1">
     	<div class="w3-col w3-center">
 	    	<div class="w3-col m3 w3-margin">공지사항 제목 </div>
 	    	<input class="w3-col m7 w3-gray w3-margin" id="title" name="title" required>
@@ -176,9 +176,9 @@ span.activepage{
     	<div class="w3-col w3-center w3-border">
 	    	<div class="w3-col w3-margin">공지 내용 </div>
 	    	<div class="w3-col m1"><p></p></div>
-	    	<input class="w3-col m10" style="height: 400px;" id="body" name="body" required>
+	    	<textarea class="w3-col m10" style="height: 400px;" id="body" name="body" required></textarea>
 	    	<div class="w3-col m5"><p></p></div>
-	    	<input class="w3-col m2 w3-button w3-border w3-red w3-hover-orange w3-border-black w3-round-xxlarge w3-margin" type="submit"> 
+	    	<div class="w3-col m2 w3-button w3-border w3-red w3-hover-orange w3-border-black w3-round-xxlarge w3-margin" id="RAS">등록</div>
     	</div>
     </form>
     

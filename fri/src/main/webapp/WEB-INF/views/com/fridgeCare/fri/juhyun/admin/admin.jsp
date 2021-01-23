@@ -177,9 +177,6 @@ span.activepage{
     	<div class="w3-col m5 w3-margin">
 	    	<div class="w3-col m5 w3-center w3-blue w3-button w3-round-large" style="margin-left: 100px;" id="cbtn">게시글 검열</div>
     	</div>
-    	<div class="w3-col m5 w3-margin">
-	    	<div class="w3-col m5 w3-center w3-purple w3-button w3-round-large" style="margin-left: 100px;" id="cdbtn">특정 회원글 삭제</div>
-    	</div>
     <!-- End Middle Column -->
     </div>
     

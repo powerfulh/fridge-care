@@ -47,6 +47,7 @@ public class KingController {
 			}else {
 				cnt = masterdao.maxFBn();
 				rv.setUrl("/fri/king/FBdetail.fri?target=" + cnt);
+				logger.info(sid + " has write feedback " + cnt);
 			}
 		} catch (Exception e) {
 			cnt = masterdao.FBdefaultdata();
@@ -60,6 +61,7 @@ public class KingController {
 					}else {
 						cnt = masterdao.maxFBn();
 						rv.setUrl("/fri/king/FBdetail.fri?target=" + cnt);
+						logger.info(sid + " has write feedback " + cnt);
 					}
 				}catch(Exception e2) {
 					e2.printStackTrace();
@@ -77,8 +79,22 @@ public class KingController {
 	}
 	@RequestMapping("/noticedetail")
 	public ModelAndView noticedetail(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
+		s.setAttribute("HOME", "king/noticedetail.fri?target=" + target + "&");
 		JNoticeVO jnvo = masterdao.getNotice(target);
 		mv.addObject("JNVO", jnvo);
+		return mv;
+	}
+	@RequestMapping("/deletenotice")
+	public ModelAndView deletenotice(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
+		rv.setUrl("/fri/king/noticelist.fri");
+		cnt = masterdao.deletenotice(target);
+		if(cnt == 0) {
+			System.out.println("notice delete fail");
+			rv.setUrl("/fri/king/noticedetail?target=" + target);
+		}else {
+			logger.info("notice " + target + "has deleted by admin");
+		}
+		mv.setView(rv);
 		return mv;
 	}
 }

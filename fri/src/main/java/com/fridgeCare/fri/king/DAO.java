@@ -40,4 +40,7 @@ public class DAO {
 	public List<JNoticeVO> noticelist(){
 		return sqlSession.selectList("noticelist");
 	}
+	public int deletenotice(int target) {
+		return sqlSession.update("UInotice", target);
+	}
 }

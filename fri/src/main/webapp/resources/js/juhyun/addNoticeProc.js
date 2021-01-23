@@ -1,11 +1,4 @@
 $(document).ready(function(){
-	$('#wbtn2').click(function(){
-		$('#frm2').submit();
-	});
-	$('#wbtn3').click(function(){
-		$('#frm3').submit();
-	});
-	
 	$('#noticebtn').click(function(){
 		$('#frm1').removeClass("w3-hide");
 		$('#qnabtn').removeClass("w3-hide");
@@ -32,6 +25,15 @@ $(document).ready(function(){
 		$('#faqbtn').addClass('w3-hide');
 		$('#frm1').addClass('w3-hide');
 		$('#frm2').addClass('w3-hide');
-		
+	});
+	$('#RAS').click(function(){
+		var string = $('#body').val();
+		var int1 = string.indexOf('\n');
+		while(int1 != -1){
+			$('#body').val(string.replace(/\n/ , '<br>'));
+			string = $('#body').val();
+			int1 = string.indexOf('\n');
+		}
+		$('#frm1').submit();
 	});
 });

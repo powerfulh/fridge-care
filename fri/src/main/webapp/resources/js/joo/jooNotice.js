@@ -8,4 +8,10 @@ $(document).ready(function(){
 	$('.noticebtn').click(function(){
 		location.href = '/fri/king/noticedetail.fri?target=' + $(this).children().html();
 	});
+	$('#deletenoticebtn').click(function(){
+		var confirm1 = confirm('정말로 삭제하시겠습니까?');
+		if(confirm1){
+			$('#deletenoticeform').submit();
+		}
+	});
 });
