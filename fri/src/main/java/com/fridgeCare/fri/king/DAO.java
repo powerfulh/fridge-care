@@ -7,7 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.hyunuk.vo.IngredVO;
 import com.fridgeCare.fri.joo.vo.JNoticeVO;
+import com.fridgeCare.fri.king.vo.FBAVO;
 import com.fridgeCare.fri.king.vo.FBVO;
 
 public class DAO {
@@ -42,5 +44,20 @@ public class DAO {
 	}
 	public int deletenotice(int target) {
 		return sqlSession.update("UInotice", target);
+	}
+	public int FBanswer(InputVO ivo) {
+		return sqlSession.insert("insertFBA", ivo);
+	}
+	public int FBAcount(int target) {
+		return sqlSession.selectOne("getFBAcount", target);
+	}
+	public FBAVO getFBA(int target) {
+		return sqlSession.selectOne("getFBA", target);
+	}
+	public List<IngredVO> ingredientlist(){
+		return sqlSession.selectList("ksql.getingredient");
+	}
+	public int addingredient(InputVO ivo) {
+		return sqlSession.insert("insertingredient", ivo);
 	}
 }

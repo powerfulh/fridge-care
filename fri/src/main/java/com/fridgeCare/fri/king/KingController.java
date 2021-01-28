@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.hyunuk.vo.IngredVO;
 import com.fridgeCare.fri.joo.vo.JNoticeVO;
+import com.fridgeCare.fri.king.vo.FBAVO;
 import com.fridgeCare.fri.king.vo.FBVO;
 @Controller
 @RequestMapping("/king")
@@ -73,8 +75,15 @@ public class KingController {
 	}
 	@RequestMapping("/FBdetail")
 	public ModelAndView FBdetail(ModelAndView mv , RedirectView rv , HttpSession s , int target) {
+		s.setAttribute("HOME", "king/FBdetail.fri?target=" + target + "&");
 		FBVO fbvo = masterdao.getFB(target);
 		mv.addObject("FBVO", fbvo);
+		cnt = masterdao.FBAcount(target);
+		mv.addObject("CNT", cnt);
+		if(cnt == 1) {
+			FBAVO fbavo = masterdao.getFBA(target);
+			mv.addObject("FBAVO", fbavo);
+		}
 		return mv;
 	}
 	@RequestMapping("/noticedetail")
@@ -93,6 +102,38 @@ public class KingController {
 			rv.setUrl("/fri/king/noticedetail?target=" + target);
 		}else {
 			logger.info("notice " + target + "has deleted by admin");
+		}
+		mv.setView(rv);
+		return mv;
+	}
+	@RequestMapping("/FBanswer.fri")
+	public ModelAndView FBanswer(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {
+		rv.setUrl("/fri/king/FBdetail.fri?target=" + ivo.getInputtarget());
+		cnt = masterdao.FBanswer(ivo);
+		if(cnt == 0) {
+			System.out.println("FBanswer proc fail");
+		}else {
+			
+		}
+		mv.setView(rv);
+		return mv;
+	}
+	@RequestMapping("/addingredient")
+	public ModelAndView addingredient(ModelAndView mv , RedirectView rv , HttpSession s) {
+		mv.setViewName("king/addingredient");
+		List<IngredVO> list = masterdao.ingredientlist();
+		mv.addObject("LIST", list);
+		return mv;
+	}
+	@RequestMapping("/addingredientproc")
+	public ModelAndView addingredientproc(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {
+		rv.setUrl("/fri/king/addingredient.fri?add");
+		cnt = masterdao.addingredient(ivo);
+		if(cnt == 0) {
+			System.out.println("add ingredient fail");
+			rv.setUrl("/fri/king/addingredient.fri?fail");
+		}else {
+			logger.info("ingredient " + ivo.getInputname() + " has added");
 		}
 		mv.setView(rv);
 		return mv;

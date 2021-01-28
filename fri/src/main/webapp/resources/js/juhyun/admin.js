@@ -11,4 +11,7 @@ $(document).ready(function(){
 	$('#cdbtn').click(function(){
 		location.href = '/fri/juhyun/admin/deletePage.fri';
 	});
+	$('#addbtn').click(function(){
+		location.href = '/fri/king/addingredient.fri';
+	});
 });

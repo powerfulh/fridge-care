@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/fri/css/my.css">
 <link rel="stylesheet" href="/fri/css/leftside.css">
 <link rel="stylesheet" href="/fri/css/hh.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -237,7 +236,7 @@ ul li {
 								style="width: 42%; margin: 20px; display: inline-block; height: 600px; float: left;">
 								<h3>선택 가능한 재료</h3>
 								<hr>
-								<ul style="padding-inline-start: 0px;">
+								<ul style="padding-inline-start: 0px;" id="ing">
 									<c:forEach var="ingred" items="${LIST}">
 										<li style="margin-left: 0px;">
 											<div id="${ingred.ino}"	class="iList w3-hide w3-button ${ingred.category}">

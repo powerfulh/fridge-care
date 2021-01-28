@@ -59,7 +59,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 	      	</c:if>
 	      </div>
       </c:if>
-      <br>
       <!-- 로그인 안했을때 -->
       <c:if test="${empty SID}">
 	      <div class="w3-card w3-round w3-white">
@@ -93,6 +92,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       
       <!-- menu sidebar -->
       <div class="w3-round">
+      	<c:if test="${not empty ADMIN}">
+			<a class="w3-teal w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" href="/fri/juhyun/admin/admin.fri">관리자 페이지</a>
+		</c:if>
 		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">나의 냉장고!</div>
 		<form action="/fri/hyunuk/search.fri" method="get">
 			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="레시피 찾기">

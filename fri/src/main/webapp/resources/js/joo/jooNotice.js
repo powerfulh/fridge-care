@@ -14,4 +14,17 @@ $(document).ready(function(){
 			$('#deletenoticeform').submit();
 		}
 	});
+	$('#RAS').click(function(){
+		var string = $('#body').val();
+		if(string == ''){
+			return;
+		}
+		var int1 = string.indexOf('\n');
+		while(int1 != -1){
+			$('#body').val(string.replace(/\n/ , '<br>'));
+			string = $('#body').val();
+			int1 = string.indexOf('\n');
+		}
+		$('#FBanswerform').submit();
+	});
 });

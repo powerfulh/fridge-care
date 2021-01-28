@@ -140,6 +140,23 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 			<div class="w3-border w3-margin-top w3-padding">
 				${FBVO.body}
 			</div>
+			<c:if test="${not empty ADMIN}">
+				<c:if test="${CNT == 0}">
+					<h4 class="w3-blue w3-margin-top">관리자 답변</h4>
+					<form action="/fri/king/FBanswer.fri" id="FBanswerform">
+						<input type="hidden" name="inputtarget" value="${param.target}">
+						<textarea rows="5" cols="40" name="inputbody" required id="body"></textarea>
+						<h5 class="w3-center w3-teal change05bgc w3-button w3-round-large" id="RAS">답변 작성</h5>
+					</form>
+				</c:if>
+			</c:if>
+			<c:if test="${CNT == 1}">
+				<div class="w3-border w3-margin-top w3-padding">
+					<h4>관리자 답변</h4>
+					<h5 style="text-align:right">${FBAVO.sdate}</h5>
+					${FBAVO.body}
+				</div>
+			</c:if>
 			<div class="w3-center">
 				<a class="w3-teal w3-round-large w3-center dimension1 w3-padding w3-button w3-hover-cyan change05bgc w3-margin-top" href="/fri/joo/notice.fri?page=1">목록</a>
 			</div>

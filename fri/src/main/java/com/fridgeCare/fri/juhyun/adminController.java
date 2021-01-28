@@ -67,8 +67,6 @@ public class adminController {
 	}
 	
 	
-	
-	
 	@RequestMapping("/wordCencerPage.fri")
 	public ModelAndView wordCencerPage(ModelAndView mv) {
 		mv.setViewName("juhyun/admin/wordCencerPage");
@@ -80,8 +78,6 @@ public class adminController {
 		mv.setViewName("juhyun/admin/wordCencerPage");
 		return mv;
 	}
-	
-	
 	
 	
 	@RequestMapping("/deletePage.fri")

@@ -1,4 +1,10 @@
 $(document).ready(function(){
+	var parameter = location.search;
+	var parameter = parameter.substr(1);
+	switch(parameter){
+		case 'add':alert('성공적으로 추가되었습니다');
+		break;
+	}
 	$('#noticebtn').click(function(){
 		$('#frm1').removeClass("w3-hide");
 		$('#qnabtn').removeClass("w3-hide");

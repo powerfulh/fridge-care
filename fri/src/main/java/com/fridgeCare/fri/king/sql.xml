@@ -45,4 +45,31 @@
 		set nisshow = 'N'
 		where nno = #{target}
 	</select>
+	
+	<select id="insertFBA" parameterType="ivo">
+		insert into FBanswer(
+		n , body , upno) VALUES(
+		nvl((select max(n) from FBanswer)+1 , 1000) , #{inputbody} , #{inputtarget})
+	</select>
+	
+	<select id="getFBAcount" parameterType="int" resultType="int">
+		select count(*) from fbanswer
+		where upno = #{target} and
+		isshow = 'Y'
+	</select>
+	
+	<select id="getFBA" parameterType="int" resultType="fbavo">
+		select * from fbanswer
+		where upno = #{target}
+	</select>
+	
+	<select id="getingredient" resultType="inVO">
+		select * from ingredient
+		order BY iname
+	</select>
+	
+	<select id="insertingredient" parameterType="ivo">
+		insert INTO ingredient VALUES(
+		nvl((select max(ino) from ingredient)+1,1000) , #{inputname} , #{inputcategory} , #{inputimage})
+	</select>
 </mapper>
