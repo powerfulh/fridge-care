@@ -121,9 +121,9 @@ body{
 			<a class="w3-teal w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" href="/fri/juhyun/admin/admin.fri">관리자 페이지</a>
 		</c:if>
 		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">나의 냉장고!</div>
-		<form action="/fri/hyunuk/search.fri" method="get">
-			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="레시피 찾기">
-		</form>
+		<div>
+			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="button" value="vue axios">
+		</div>
 		<c:if test="${not empty SID}">
 			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">우리들의 냉장고!!</div>
 			<form action="/fri/joo/recipeAdd.fri" method="get">
@@ -205,7 +205,7 @@ body{
 	<a href="/fri/king/noticelist.fri">공지사항</a>
 </footer>
 <footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <p><a href="/fri/king/videotag.fri">video tag</a></p>
 </footer>
 
 </body>

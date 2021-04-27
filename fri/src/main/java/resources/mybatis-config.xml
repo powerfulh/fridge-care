@@ -17,8 +17,8 @@
 	
 	<!-- 마이바티스에서 사용할 타입 정의하기 -->
 	<typeAliases>
-		<typeAlias alias="mvo" type="com.fridgeCare.fri.hh.vo.MemberVO"/>
 		<typeAlias alias="tvo" type="com.fridgeCare.fri.hh.vo.ThumbVO"/>
+		<typeAlias alias="mvo" type="com.fridgeCare.fri.hh.vo.MemberVO"/>
 		<typeAlias alias="ivo" type="com.fridgeCare.fri.hh.vo.InputVO"/>
 		<typeAlias alias="luvo" type="com.fridgeCare.fri.hh.vo.LatelyUploadVO"/>
 		<typeAlias alias="srvo" type="com.fridgeCare.fri.hh.vo.SideRankVO"/>

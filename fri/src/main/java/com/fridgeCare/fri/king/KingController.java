@@ -138,4 +138,10 @@ public class KingController {
 		mv.setView(rv);
 		return mv;
 	}
+	@RequestMapping("/videotag")
+	public ModelAndView videotag(ModelAndView mv , RedirectView rv , HttpSession s) {
+		mv.setViewName("king/videotag");
+		
+		return mv;
+	}
 }
