@@ -9,6 +9,6 @@ public class SearchDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	public int logincheck(InputVO ivo) {
-		return sqlSession.selectOne("hsql.logincheck", ivo); // 아직 dao는 손 안댔다 이제 대야지
+		return sqlSession.selectOne("hsql.logincheck", ivo);
 	}
 }

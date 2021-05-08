@@ -2,48 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hsql">
-	<select id="idcheck" resultType="int" parameterType="string">
-		select count(*) from member where id = #{id}
-	</select>
-	
-	<select id="mailcheck" resultType="int" parameterType="string">
-		select count(*) from member where mail = #{mail}
-	</select>
-	
-	<select id="insertmember" parameterType="ivo">
-		insert INTO member(
-		mno , id , pw , mail , age , gen , local , tel) VALUES(
-		(select max(mno) from member)+1 , #{inputid} , #{inputpw} , #{inputmail} , #{inputage} , #{inputgen} , #{inputloc} , #{inputtel}
-		)
-	</select>
-	
-	<select id="updatemember" parameterType="ivo">
-		update member set
-		tel = #{inputtel} , age = #{inputage} , local = #{inputloc}
-		where id = #{inputid}
-	</select>
-	
 	<select id="logincheck" parameterType="ivo" resultType="int">
 		select count(*) from member
 		where id = #{inputid} and pw = #{inputpw} and isshow = 'Y'
-	</select>
-	
-	<select id="getThumb" parameterType="string" resultType="string">
-		select tname from thumb
-		where tmno = (select mno from member where id = #{sid})
-	</select>
-	
-	<select id="insertavt" parameterType="tvo">
-		insert INTO thumb(
-		tno , dir , tname , tmno) VALUES(
-		(select max(tno) from thumb)+1 , #{dir} , #{tname} ,
-		(select mno from member where id = #{id}))
-	</select>
-	
-	<select id="updateavt" parameterType="tvo">
-		update thumb set
-		dir = #{dir} , tname = #{tname}
-		where tmno = (select mno from member where id = #{id})
 	</select>
 	
 	<select id="getLUVO" resultType="luvo">
@@ -103,10 +64,6 @@
 	
 	<select id="updatepw" parameterType="mvo">
 		UPDATE member set pw = #{pw} where id = #{id}
-	</select>
-	
-	<select id="secession" parameterType="string">
-		update member set isshow = 'N' where id = #{sid}
 	</select>
 	
 	<select id="confirmpartner" resultType="int" parameterType="string">

@@ -5,19 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import com.fridgeCare.fri.hh.vo.InputVO;
+
 
 @Controller
 @RequestMapping("/hyunuk")
 public class HyunukController {
 	@Autowired
 	SearchDao sDao;
+	int cnt;
 	@RequestMapping("/search.fri")
 	@ResponseBody
 	@CrossOrigin(origins = "http://localhost:8080")
-	public String getList(String data1) {
-		System.out.println(data1);
-		
-		return "{\"result\":\"OK\"}";
+	public boolean getList(InputVO ivo) {
+		cnt = sDao.logincheck(ivo);
+		if (cnt == 1) return true;
+		return false;
 	}
 	@RequestMapping(value="/selected.fri", method = RequestMethod.POST)
 	@ResponseBody

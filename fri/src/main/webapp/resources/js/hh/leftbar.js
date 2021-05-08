@@ -1,27 +1,4 @@
 $(function(){
-	var parameter = location.search;
-	var parameter = parameter.substr(1);
-	var PC = parameter.indexOf('removerid'); // parameter check
-	if(PC != -1){
-		localStorage.removeItem('RID');
-	}
-	PC = parameter.indexOf('fail');
-	if(PC != -1){
-		alert('회원정보가 맞지 않습니다');
-	}
-	PC = parameter.indexOf('deleteR');
-	if(PC != -1){
-		alert('레시피가 삭제되었습니다');
-	}
-	var rid = $('#saverid').html();
-	if(rid != null && rid !=''){
-		localStorage.setItem('RID' , rid);
-	}
-	$('#inputid').val(localStorage.getItem('RID'));
-	var getrid = localStorage.getItem('RID');
-	if(getrid != null){
-		$('#inputsetrid').attr('checked' , 'true');
-	}
 	$('#loginbtn').click(function(){
 		var inputid = $('input[name="inputid"]').val();
 		if(inputid == ''){
@@ -29,13 +6,21 @@ $(function(){
 		}
 		$('#loginform').submit();
 	});
-	$('#logoutbtn').click(function(){
-		$(location).attr('href' , '/fri/hh/logout.fri');
-	});
-	$('#myinfobtn').click(function(){
-		$(location).attr('href' , '/fri/hh/myinfo.fri');
-	});
 	$('#fqabtn').click(function(){
 		$(location).attr('href' , '/fri/joo/notice.fri?page=1');
+	});
+	
+	$('#twitchbtn').click(function(){
+		$.ajax({
+			type:'GET',
+			url:'https://api.twitch.tv/helix/search/channels?query=captainrabbit_',
+			beforeSend: function (xhr) {
+	            xhr.setRequestHeader("client-id","xfgs4yoqyurihzrmpwr5cya3982qfx");
+	            xhr.setRequestHeader("Authorization","Bearer 2gbdx6oar67tqtcmt49t3wpcgycthx");
+	        },
+			success: function (res) {
+	            console.log(res);
+	        }
+		})
 	});
 });

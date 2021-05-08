@@ -1,13 +1,4 @@
 $(function(){
-	var parameter = location.search;
-	var parameter = parameter.substr(1);
-	if(parameter == 'edit'){
-		alert('수정 성공');
-	}
-	switch(parameter){
-		case 'secessionfail':alert('탈퇴처리에 실패했어요\n시간이 오래 지난경우 세션이 끊어졌을수 있어요');
-		break;
-	}
 	$('#inputpwre').keyup(function(){
 		var pwrule = /^[a-zA-Z1-9]{6,12}$/;
 		if(pwrule.test($('#inputpw').val())){
@@ -21,12 +12,6 @@ $(function(){
 		}else{
 			$('#submitbtn').addClass('w3-disabled');
 			$('#pwrecheck').html('형식에 맞지 않음');
-		}
-	});
-	$('#secessionbtn').click(function(){
-		var SC = confirm('탈퇴하시겠습니까?');
-		if(SC){
-			location.href = '/fri/hh/secession.fri';
 		}
 	});
 });

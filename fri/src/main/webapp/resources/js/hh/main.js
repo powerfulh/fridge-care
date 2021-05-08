@@ -88,5 +88,5 @@ function partnerproc(){
 			error:function(){
 				alert('잠시후 다시 시도해주십시오');
 			}
-		})
+	})
 }

@@ -14,7 +14,6 @@ public class CencerCheck implements HandlerInterceptor {
 	@Autowired
 	AdminService aSrvc;
 	
-	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler)
 			throws Exception {
 		// 요청 보낸 주소 받아오고
@@ -78,13 +77,11 @@ public class CencerCheck implements HandlerInterceptor {
 		return false;
 	}
 
-	@Override
 	public void postHandle(HttpServletRequest req, HttpServletResponse resp, Object handler,
 			ModelAndView modelAndView) throws Exception {
 
 	}
 
-	@Override
 	public void afterCompletion(HttpServletRequest req, HttpServletResponse resp, Object handler, Exception ex)
 			throws Exception {
 

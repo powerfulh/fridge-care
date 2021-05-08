@@ -58,58 +58,32 @@ body{
     <!-- Left Column -->
     <div class="w3-col m3" style="max-width:1400px; min-width:240px">
       <!-- Profile -->
-      <c:if test="${not empty SID}">
-      	<span class="w3-hide" id="saverid">${param.setrid}</span>
-	      <div class="w3-card w3-round w3-white">
-	      	<c:if test="${GRADE == 1}">
-		        <div class="w3-container">
-		         <h4 class="w3-center">My Profile</h4>
-		         <p class="w3-center"><img src="/fri/img/avatar/${AVT}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-		         <hr>
-		         <p><i class="fa fa-id-badge fa-fw w3-margin-right w3-text-theme"></i>${SID}</p>
-		         <p class="w3-btn w3-border w3-hover-blue change05bgc" id="myinfobtn"><i class="fa fa-info fa-fw w3-margin-right w3-text-theme"></i> 내 정보 보기</p>
-		         <p class="w3-btn w3-border w3-hover-blue change05bgc" id="logoutbtn"><i class="fa fa-sign-out fa-fw w3-margin-right w3-text-theme"></i> 로그아웃</p>
-		        </div>
-	      	</c:if>
-	      	<c:if test="${GRADE == 2}">
-		        <div class="w3-container w3-yellow">
-		         <h4 class="w3-center">My Profile</h4>
-		         <p class="w3-center"><img src="/fri/img/avatar/${AVT}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-		         <hr>
-		         <p><i class="fa fa-id-badge fa-fw w3-margin-right w3-text-theme"></i>${SID}</p>
-		         <p class="boldfont"><i class="fa fa-check fa-fw w3-margin-right w3-text-theme"></i>파트너 유저</p>
-		         <p class="w3-btn w3-border w3-hover-blue change05bgc" id="myinfobtn"><i class="fa fa-info fa-fw w3-margin-right w3-text-theme"></i> 내 정보 보기</p>
-		         <p class="w3-btn w3-border w3-hover-blue change05bgc" id="logoutbtn"><i class="fa fa-sign-out fa-fw w3-margin-right w3-text-theme"></i> 로그아웃</p>
-		        </div>
-	      	</c:if>
-	      </div>
-      </c:if>
       <!-- 로그인 안했을때 -->
       <c:if test="${empty SID}">
 	      <div class="w3-card w3-round w3-white">
 	        <form class="w3-container w3-padding" method="get" action="/fri/hh/logincheck.fri" id="loginform">
-	        <div class="w3-padding">
-	        	<div class="inline dimension3">ID</div>
-	        	<input name="inputid" class="dimension2" id="inputid">
-	        	<span class="pt8 w3-margin-left">ID 기억</span>
-		        <input type="checkbox" class="w3-check" name="idcookie" id="inputsetrid">
-	        </div>
-	        <div class="w3-padding">
-	        	<div class="inline dimension3">PW</div>
-	        	<input name="inputpw" class="dimension2" type="password">
-	        </div>
-	         <div class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="loginbtn">
-	         	<i class="fa fa-sign-in fa-fw w3-margin-right w3-text-theme"></i> 로그인
-	         </div>
-	         <a class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="joinbtn" href="/fri/hh/joinpage.fri">
-	         	<i class="fa fa-user-plus fa-fw w3-margin-right w3-text-theme"></i> 회원가입
-	         </a>
-	         <a class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="pwfindbtn" href="/fri/hh/pwfind.fri">
-	         	<i class="fa fa-user-plus fa-fw w3-margin-right w3-text-theme"></i> 비밀번호 찾기/변경
-	         </a>
-	         <div class="w3-btn w3-hide" id="ajaxtest">test</div>
-	         <div class="w3-btn w3-hide" id="test2">mail test</div>
-	         <a class="w3-btn w3-hide" href="/fri/hh/transtest.fri">trans test</a>
+		        <div class="w3-padding">
+		        	<div class="inline dimension3">ID</div>
+		        	<input name="inputid" class="dimension2" id="inputid">
+		        	<span class="pt8 w3-margin-left">ID 기억</span>
+			        <input type="checkbox" class="w3-check" name="idcookie" id="inputsetrid">
+		        </div>
+		        <div class="w3-padding">
+		        	<div class="inline dimension3">PW</div>
+		        	<input name="inputpw" class="dimension2" type="password">
+		        </div>
+		         <div class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="loginbtn">
+		         	<i class="fa fa-sign-in fa-fw w3-margin-right w3-text-theme"></i> 로그인
+		         </div>
+		         <a class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="joinbtn" href="/fri/hh/joinpage.fri">
+		         	<i class="fa fa-user-plus fa-fw w3-margin-right w3-text-theme"></i> 트위치 디벨로퍼
+		         </a>
+		         <a class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="pwfindbtn" href="/fri/hh/pwfind.fri">
+		         	<i class="fa fa-user-plus fa-fw w3-margin-right w3-text-theme"></i> 비밀번호 찾기/변경
+		         </a>
+		         <div class="w3-btn w3-hide" id="ajaxtest">test</div>
+		         <div class="w3-btn w3-hide" id="test2">mail test</div>
+		         <a class="w3-btn w3-hide" href="/fri/hh/transtest.fri">trans test</a>
 	        </form>
 	      </div>
       </c:if>
@@ -120,9 +94,10 @@ body{
       	<c:if test="${not empty ADMIN}">
 			<a class="w3-teal w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" href="/fri/juhyun/admin/admin.fri">관리자 페이지</a>
 		</c:if>
-		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">나의 냉장고!</div>
+		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">twitch</div>
 		<div>
-			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="button" value="vue axios">
+			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="button" value="api call" id="twitchbtn">
+			<a class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc">translate</a>
 		</div>
 		<c:if test="${not empty SID}">
 			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">우리들의 냉장고!!</div>

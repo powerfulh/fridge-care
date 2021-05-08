@@ -26,3 +26,8 @@ input.dimension3{
 a.dimension2{
 	width:200px;
 }
+a.dimension3{
+	width:90%;
+	height:35px;
+	margin-bottom:5px;
+}
