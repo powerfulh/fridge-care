@@ -4,7 +4,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fridgeCare.fri.hh.vo.InputVO;
-import com.fridgeCare.fri.hh.vo.LatelyUploadVO;
 import com.fridgeCare.fri.hh.vo.MemberVO;
 import com.fridgeCare.fri.hh.vo.SideRankVO;
 
@@ -13,9 +12,6 @@ public class DAO {
 	SqlSessionTemplate sqlSession;
 	public int logincheck(InputVO ivo) {
 		return sqlSession.selectOne("hsql.logincheck", ivo);
-	}
-	public LatelyUploadVO getLUVO() {
-		return sqlSession.selectOne("hsql.getLUVO");
 	}
 	public SideRankVO getWR() {
 		return sqlSession.selectOne("hsql.getweekrank");

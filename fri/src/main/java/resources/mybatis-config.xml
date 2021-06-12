@@ -20,11 +20,8 @@
 		<typeAlias alias="tvo" type="com.fridgeCare.fri.hh.vo.ThumbVO"/>
 		<typeAlias alias="mvo" type="com.fridgeCare.fri.hh.vo.MemberVO"/>
 		<typeAlias alias="ivo" type="com.fridgeCare.fri.hh.vo.InputVO"/>
-		<typeAlias alias="luvo" type="com.fridgeCare.fri.hh.vo.LatelyUploadVO"/>
 		<typeAlias alias="srvo" type="com.fridgeCare.fri.hh.vo.SideRankVO"/>
 		
-		<typeAlias alias="rVO" type="com.fridgeCare.fri.juhyun.vo.ResipiVO"/>
-		<typeAlias alias="pVO" type="com.fridgeCare.fri.juhyun.vo.PartnerVO"/>
 		<typeAlias alias="page" type="com.fridgeCare.fri.juhyun.PageUtil"/>
 		<typeAlias alias="aVO" type="com.fridgeCare.fri.juhyun.vo.AdminVO"/>
 		
@@ -47,8 +44,6 @@
 	<mappers><!-- 매퍼등록시 주의할점은 자바와 다르게 .이아니고 /로 경로안쪽으로 들어간다 -->
 		<mapper resource="com/fridgeCare/fri/hh/sql.xml"/>
 		
-		<mapper resource="com/fridgeCare/fri/juhyun/rSQL.xml"/>
-		<mapper resource="com/fridgeCare/fri/juhyun/pSQL.xml"/>
 		<mapper resource="com/fridgeCare/fri/juhyun/aSQL.xml"/>
 		
 		<mapper resource="com/fridgeCare/fri/joo/jooSQL.xml"/>

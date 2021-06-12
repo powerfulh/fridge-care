@@ -96,17 +96,4 @@ public class adminController {
 		mv.setViewName("juhyun/admin/deletePage");
 		return mv;
 	}
-	
-	@RequestMapping("/delete.fri")
-	public ModelAndView delete(ModelAndView mv,AdminVO aVO) {
-		try {
-			aVO.setMno(aDao.getMno(aVO.getId()));
-			
-			System.out.println("mno : " + aVO.getMno());
-			
-			aSrvc.deleteMemb(mv, aVO, aDao);
-		}catch(Exception e) {}
-		mv.setViewName("juhyun/admin/deletePage");
-		return mv;
-	}
 }

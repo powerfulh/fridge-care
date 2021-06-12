@@ -1,6 +1,13 @@
 package com.fridgeCare.fri.hh;
 
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +23,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.fridgeCare.fri.hh.util.Navermail;
 import com.fridgeCare.fri.hh.vo.InputVO;
-import com.fridgeCare.fri.hh.vo.LatelyUploadVO;
 import com.fridgeCare.fri.hh.vo.MemberVO;
 import com.fridgeCare.fri.hh.vo.SideRankVO;
 @Controller
@@ -29,22 +35,8 @@ public class HController {
 	String home;
 	@RequestMapping("/main.fri")
 	public String getMain(HttpSession s , HttpServletRequest request) {
-//		String sid = (String) s.getAttribute("SID");
-		LatelyUploadVO luvo = hdao.getLUVO();
 		SideRankVO srvo = hdao.getWR();
 		s.setAttribute("HOME", "hh/main.fri?");
-		try {
-			if(luvo.getTname() == null) {
-				luvo.setTname("noimage.jpg");
-			}
-			if(luvo.getSavename() == null) {
-				luvo.setSavename("noimage.jpg");
-			}
-			s.setAttribute("LUVO", luvo);
-		}catch(NullPointerException e) {
-//			e.printStackTrace();
-			System.out.println("no any board or boardpart");
-		}
 		s.setAttribute("WVO", srvo);
 		srvo = hdao.getMR();
 		s.setAttribute("MVO", srvo);
@@ -60,11 +52,26 @@ public class HController {
 		
 		return "hh/pwfind";
 	}
-	@RequestMapping("/ajaxtest.fri")
+	@RequestMapping("/twitch.fri")
 	@ResponseBody
-	public String ajaxtest(String[] ajaxdata) {
+	public String ajaxtest() {
 		String view = "{\"result\" : \"NO\"}";
-		System.out.println(ajaxdata[0]);
+		try {
+			URL url = new URL("https://id.twitch.tv/oauth2/authorize");
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setDoOutput(true);
+			String param = "client_id=xfgs4yoqyurihzrmpwr5cya3982qfx";
+			OutputStream ops = con.getOutputStream();
+			DataOutputStream dos = new DataOutputStream(ops);
+			dos.writeBytes(param);
+			dos.close();
+			int res = con.getResponseCode();
+			InputStream is;
+			is = res == 200 ? con.getInputStream() : con.getErrorStream();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 		return view;
 	}
 	@RequestMapping("/logincheck.fri")

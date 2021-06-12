@@ -53,14 +53,13 @@ body{
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
 		<h1><a href="/fri/hh/main.fri">냉장고를 부탁해!</a></h1>
 	</div>
-  <!-- The Grid -->
-  <div class="w3-row" style="min-width:1000px">
-    <!-- Left Column -->
-    <div class="w3-col m3" style="max-width:1400px; min-width:240px">
-      <!-- Profile -->
-      <!-- 로그인 안했을때 -->
-      <c:if test="${empty SID}">
-	      <div class="w3-card w3-round w3-white">
+	<!-- The Grid -->
+	<div class="w3-row" style="min-width:1000px">
+    	<!-- Left Column -->
+		<div class="w3-col m3" style="max-width:1400px; min-width:240px">
+      	<!-- Profile -->
+      	<!-- 로그인 안했을때 -->
+	    <div class="w3-card w3-round w3-white">
 	        <form class="w3-container w3-padding" method="get" action="/fri/hh/logincheck.fri" id="loginform">
 		        <div class="w3-padding">
 		        	<div class="inline dimension3">ID</div>
@@ -85,58 +84,42 @@ body{
 		         <div class="w3-btn w3-hide" id="test2">mail test</div>
 		         <a class="w3-btn w3-hide" href="/fri/hh/transtest.fri">trans test</a>
 	        </form>
-	      </div>
-      </c:if>
-      <br>
-      
-      <!-- menu sidebar -->
-      <div class="w3-round">
-      	<c:if test="${not empty ADMIN}">
-			<a class="w3-teal w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" href="/fri/juhyun/admin/admin.fri">관리자 페이지</a>
-		</c:if>
-		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">twitch</div>
-		<div>
-			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="button" value="api call" id="twitchbtn">
-			<a class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc">translate</a>
 		</div>
-		<c:if test="${not empty SID}">
-			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">우리들의 냉장고!!</div>
-			<form action="/fri/joo/recipeAdd.fri" method="get">
-				<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="내 레시피 작성">
+      	<br>
+      	<!-- menu sidebar -->
+      	<div class="w3-round">
+	      	<c:if test="${not empty ADMIN}">
+				<a class="w3-teal w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc" href="/fri/juhyun/admin/admin.fri">관리자 페이지</a>
+			</c:if>
+			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">twitch</div>
+			<div>
+				<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="button" value="api call" id="twitchbtn">
+			</div>
+			<c:if test="${not empty SID}"><!-- 레시피 추가 관련 다 없앨 예정 -->
+				<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">우리들의 냉장고!!</div>
+				<form action="/fri/joo/recipeAdd.fri" method="get">
+					<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="내 레시피 작성">
+				</form>
+			</c:if>
+			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">고급 냉장고(파트너 유저)</div>
+			<form action="/fri/juhyun/partner/partner.fri" method="get">
+				<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="파트너 레시피 보기">
 			</form>
-		</c:if>
-		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">고급 냉장고(파트너 유저)</div>
-		<form action="/fri/juhyun/partner/partner.fri" method="get">
-			<input class="w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-light-blue w3-hover-cyan change05bgc" type="submit" value="파트너 레시피 보기">
-		</form>
-		<c:if test="${not empty SID}">
-			<div class="w3-light-blue w3-round-large w3-center dimension8 w3-padding-small inline w3-button w3-hover-cyan change05bgc" id="partnerbtn">파트너 유저 신청</div>
-		</c:if>
-		<div class="w3-teal w3-round-large w3-center dimension7 w3-padding w3-margin-top w3-button w3-hover-cyan change05bgc" id="fqabtn">Feedback / Q &amp; A</div>
-      </div>
-      <br>
-    
+			<c:if test="${not empty SID}">
+				<div class="w3-light-blue w3-round-large w3-center dimension8 w3-padding-small inline w3-button w3-hover-cyan change05bgc" id="partnerbtn">파트너 유저 신청</div>
+			</c:if>
+			<div class="w3-teal w3-round-large w3-center dimension7 w3-padding w3-margin-top w3-button w3-hover-cyan change05bgc" id="fqabtn">Feedback / Q &amp; A</div>
+      	</div>
+      	<br>
     <!-- End Left Column -->
     </div>
-    
     <!-- Middle Column -->
     <div class="w3-col m7">
-      
-      <form class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right clickable latelyuploadbtn" method="get" action="/fri/juhyun/recipe/resipiPage.fri" id="luvoform"><br>
-      	<input type="hidden" name="bno" value="${LUVO.bno}">
-        <img src="/fri/img/avatar/${LUVO.tname}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">${LUVO.sdate}</span>
-        <h4>${LUVO.id}</h4><br>
-        <hr class="w3-clear">
-        <p>${LUVO.title}</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-col">
-              <img src="/fri/img/thumb/${LUVO.savename}" style="width:100%" alt="thumbsnail" class="w3-margin-bottom">
-            </div>
-        </div>
+      <form class="w3-card w3-round w3-margin-left w3-margin-right clickable w3-padding" method="get" action="/fri/juhyun/recipe/resipiPage.fri" id="luvoform">
+      	<div>
+      		트게더 미러
+      	</div>
       </form>
-      
-      
       
     <!-- End Middle Column -->
     </div>

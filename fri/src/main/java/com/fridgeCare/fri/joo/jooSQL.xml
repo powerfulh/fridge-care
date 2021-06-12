@@ -69,17 +69,6 @@
 			AND tno = #{tno}
 	</select>
 	
-	<select id="getNotice" resultType="fbvo" parameterType="pvo">
-		select * from
-		(select n , writedate , writer , title , category , body , isshow , rownum rn
-		from
-		(select *
-		from feedback
-				where isshow = 'Y'
-				order by n desc))
-		where rn BETWEEN #{firstcontent} and #{lastcontent}
-	</select>
-	
 	<select id="getLN" resultType="jnvo">
 		select * from notice
 		where nno = (select max(nno) from notice)

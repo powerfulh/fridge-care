@@ -25,7 +25,7 @@
 			<exclude-mapping path="/hh/logincheck.fri"/>
 			<exclude-mapping path="/hh/logout.fri"/>
 			<exclude-mapping path="/hh/myinfo.fri"/>
-			<exclude-mapping path="/hh/ajaxtest.fri"/>
+			<exclude-mapping path="/hh/twitch.fri"/>
 			<exclude-mapping path="/hh/pwfind.fri"/>
 			<exclude-mapping path="/hh/mailtest.fri"/>
 			<exclude-mapping path="/hh/transtest.fri"/>
@@ -57,6 +57,7 @@
 			<exclude-mapping path="/king/FBdetail.fri"/>
 			<exclude-mapping path="/king/noticedetail.fri"/>
 			<exclude-mapping path="/king/noticelist.fri"/>
+			<exclude-mapping path="/king/videotag.fri"/>
 			<beans:ref bean="LoginCheck"/>
 		</interceptor>
 		<interceptor>

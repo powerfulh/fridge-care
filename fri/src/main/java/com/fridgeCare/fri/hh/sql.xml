@@ -7,16 +7,6 @@
 		where id = #{inputid} and pw = #{inputpw} and isshow = 'Y'
 	</select>
 	
-	<select id="getLUVO" resultType="luvo">
-		select *
-		from (select board.bno , title , bdate d , (select id from member where mno = bmno) id , (select tname from thumb where tno = board.tno) savename ,
-		(select tname from thumb where thumb.tmno = (select mno from member where mno = bmno)) tname
-		from board , boardpart
-		where board.bno = boardpart.bno and isshow = 'Y'
-		order by bno desc , bpno)
-		where rownum = 1
-	</select>
-	
 	<select id="getweekrank" resultType="srvo">
 		select * from
 		(select bno , tname , title , id
